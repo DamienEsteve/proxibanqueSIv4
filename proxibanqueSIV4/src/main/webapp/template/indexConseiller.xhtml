@@ -11,7 +11,11 @@
 	<h4>Liste des Clients de l'Agence dont vous êtes le conseiller :</h4>
 	<c:forEach items="#{.listeAllClients()}" var="client">
 		<h:form>
-
+			<h:commandButton action="#"
+				value="Voir">
+				<f:setPropertyActionListener value="#"
+					target="#"></f:setPropertyActionListener>
+			</h:commandButton>
 		</h:form>
 	</c:forEach>
 </body>
