@@ -1,5 +1,7 @@
 package fr.gtm.proxibanquesiv4.metier;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -36,7 +38,7 @@ public class CompteEpargne extends Compte {
 	 * Constructeur par défaut de la classe compte epargne
 	 */
 	public CompteEpargne() {
-		logger.info("Constructeur par défaut de la classe modele.CompteEpargne");
+		logger.info("Constructeur par d�faut de la classe modele.CompteEpargne");
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class CompteEpargne extends Compte {
 	 * @param dateOuverture
 	 *            date d'ouverture du compte épargne dans l'agence
 	 */
-	public CompteEpargne(String numeroCompte, double solde, String dateOuverture) {
+	public CompteEpargne(Long numeroCompte, double solde, Date dateOuverture) {
 		super(numeroCompte, solde, dateOuverture);
 	}
 

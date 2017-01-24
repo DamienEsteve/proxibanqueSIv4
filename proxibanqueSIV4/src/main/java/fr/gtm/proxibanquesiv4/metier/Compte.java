@@ -1,6 +1,7 @@
 package fr.gtm.proxibanquesiv4.metier;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -31,13 +32,12 @@ public abstract class Compte implements Serializable {
 
 	@Transient
 	private static Logger logger = Logger.getLogger(Compte.class);
-	
 
 	/**
 	 * Le numero de Compte. Chaque num�ro est unique.
 	 */
 	@Id
-	private String numeroCompte;
+	private Long numeroCompte;
 
 	/**
 	 * Le solde du compte.
@@ -51,7 +51,7 @@ public abstract class Compte implements Serializable {
 	/**
 	 * La date d'ouverture du compte.
 	 */
-	private String dateOuverture;
+	private Date dateOuverture;
 
 	/**
 	 * Le boolean est vrai si le compte est un compte d'entreprise, faux s'il
@@ -70,19 +70,18 @@ public abstract class Compte implements Serializable {
 	/**
 	 * Le constructeur du Compte. 3 Param�tres sont pris en compte :
 	 * 
-	 * @param numeroCompte
+	 * @param numeroCompte2
 	 *            Le num�ro de compte.
 	 * @param solde
 	 *            Le solde du compte.
-	 * @param dateOuverture
+	 * @param dateOuverture2
 	 *            La date d'ouverture du compte.
 	 * 
 	 */
-	public Compte(String numeroCompte, double solde, String dateOuverture) {
-		this.numeroCompte = numeroCompte;
+	public Compte(Long numeroCompte2, double solde, Date dateOuverture2) {
+		this.numeroCompte = numeroCompte2;
 		this.solde = solde;
-		this.dateOuverture = dateOuverture;
-
+		this.dateOuverture = dateOuverture2;
 	}
 
 	/**
@@ -90,7 +89,7 @@ public abstract class Compte implements Serializable {
 	 * 
 	 * @return Le num�ro de compte.
 	 */
-	public String getNumeroCompte() {
+	public Long getNumeroCompte() {
 		return numeroCompte;
 	}
 
@@ -100,7 +99,7 @@ public abstract class Compte implements Serializable {
 	 * @param numeroCompte
 	 *            Le nouveau num�ro de compte.
 	 */
-	public void setNumeroCompte(String numeroCompte) {
+	public void setNumeroCompte(Long numeroCompte) {
 		this.numeroCompte = numeroCompte;
 	}
 
@@ -129,7 +128,7 @@ public abstract class Compte implements Serializable {
 	 * 
 	 * @return La date d'ouverture du compte.
 	 */
-	public String getDateOuverture() {
+	public Date getDateOuverture() {
 		return dateOuverture;
 	}
 
@@ -140,7 +139,7 @@ public abstract class Compte implements Serializable {
 	 * @param dateOuverture
 	 *            La nouvelle date d'ouverture du compte.
 	 */
-	public void setDateOuverture(String dateOuverture) {
+	public void setDateOuverture(Date dateOuverture) {
 		this.dateOuverture = dateOuverture;
 	}
 
@@ -159,8 +158,8 @@ public abstract class Compte implements Serializable {
 	 * @param compteEntreprise
 	 *            le type entreprise ou priv�e du compte.
 	 */
-	public void setCompteEntreprise(boolean compteEntreprise) {
-		this.compteEntreprise = compteEntreprise;
+	public boolean isCompteEntreprise() {
+		return compteEntreprise;
 	}
 
 	/**
@@ -178,15 +177,11 @@ public abstract class Compte implements Serializable {
 		this.client = client;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result + (compteEntreprise ? 1231 : 1237);
 		result = prime * result + ((dateOuverture == null) ? 0 : dateOuverture.hashCode());
 		result = prime * result + ((numeroCompte == null) ? 0 : numeroCompte.hashCode());
@@ -196,20 +191,20 @@ public abstract class Compte implements Serializable {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Compte))
+		if (getClass() != obj.getClass())
 			return false;
 		Compte other = (Compte) obj;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
+			return false;
 		if (compteEntreprise != other.compteEntreprise)
 			return false;
 		if (dateOuverture == null) {
@@ -227,19 +222,9 @@ public abstract class Compte implements Serializable {
 		return true;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public String  getId() {
-		return numeroCompte;
-	}
+	
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String numeroCompte) {
-		this.numeroCompte = numeroCompte;
-	}
+
 	
 	
 

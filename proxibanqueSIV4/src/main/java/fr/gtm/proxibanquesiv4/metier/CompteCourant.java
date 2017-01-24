@@ -1,10 +1,10 @@
 package fr.gtm.proxibanquesiv4.metier;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
@@ -48,7 +48,7 @@ public class CompteCourant extends Compte {
 	 * @param dateOuverture
 	 *            date d'ouverture du compte courant dans l'agence
 	 */
-	public CompteCourant(String numeroCompte, double solde, String dateOuverture) {
+	public CompteCourant(Long numeroCompte, double solde, Date dateOuverture) {
 		super(numeroCompte, solde, dateOuverture);
 	}
 

@@ -38,6 +38,8 @@ public class Client extends Personne implements Serializable {
 	private List<Compte> listeCompte;
 	
 	private Coordonnees coordonneesClient;
+	
+	private boolean estSociete;
 
 	/**
 	 * Le constructeur du client sans param�tre.
@@ -93,6 +95,12 @@ public class Client extends Personne implements Serializable {
 	}
 	public void setCoordonneesClient(Coordonnees coordonneesClient) {
 		this.coordonneesClient = coordonneesClient;
+	}
+	public boolean isEstSociete() {
+		return estSociete;
+	}
+	public void setEstSociete(boolean estSociete) {
+		this.estSociete = estSociete;
 	}
 
 

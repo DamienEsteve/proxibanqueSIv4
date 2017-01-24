@@ -23,15 +23,13 @@ import org.apache.log4j.Logger;
  *
  */
 @Entity
-public class Conseiller implements Serializable {
+public class Conseiller extends Utilisateur implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1L;
 
 	@Transient
 	private static Logger logger = Logger.getLogger(Conseiller.class);
-	
-	private String login,password;
 	
 	private List<Client> listeClient;
 
@@ -44,7 +42,7 @@ public class Conseiller implements Serializable {
 	 */
 	public Conseiller() {
 		logger.info("Constructeur par défaut de la classe modele.Conseiller");
-		listeClient = new ArrayList<Client>();
+		setListeClient(new ArrayList<Client>());
 	}
 
 	/**
@@ -77,5 +75,19 @@ public class Conseiller implements Serializable {
 	public void setGerant(Gerant gerant) {
 		this.gerant = gerant;
 	}
+
+	public List<Client> getListeClient() {
+		return listeClient;
+	}
+
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
+	}
+
+
+
+
+	
+	
 
 }
