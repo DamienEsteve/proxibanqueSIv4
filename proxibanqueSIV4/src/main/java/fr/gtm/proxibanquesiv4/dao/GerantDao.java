@@ -16,7 +16,7 @@ import fr.gtm.proxibanquesiv4.metier.Virement;
 
 @Repository("gerantDao")
 @Transactional
-public class GerantDao implements IGerant {
+public class GerantDao implements IGerantDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
