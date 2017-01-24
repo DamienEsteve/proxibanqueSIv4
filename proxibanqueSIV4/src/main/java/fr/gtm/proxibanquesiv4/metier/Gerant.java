@@ -5,11 +5,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
-
+@Entity
+@Component
 public class Gerant extends Utilisateur implements Serializable{
 
 	@Transient
@@ -18,6 +22,7 @@ public class Gerant extends Utilisateur implements Serializable{
 	@Transient
 	private static Logger logger = Logger.getLogger(Conseiller.class);
 	
+	@OneToMany(mappedBy="gerant")
 	private List<Conseiller> listeConseiller;
 
 	public Gerant() {

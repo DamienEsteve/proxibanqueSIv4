@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -20,6 +21,7 @@ import org.apache.log4j.Logger;
  */
 @SuppressWarnings("serial")
 @Entity
+@Component
 @DiscriminatorValue("EPARGNE")
 public class CompteEpargne extends Compte {
 

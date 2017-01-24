@@ -8,14 +8,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -23,6 +22,7 @@ import org.apache.log4j.Logger;
  *
  */
 @Entity
+@Component
 public class Conseiller extends Utilisateur implements Serializable {
 
 	@Transient
@@ -31,10 +31,10 @@ public class Conseiller extends Utilisateur implements Serializable {
 	@Transient
 	private static Logger logger = Logger.getLogger(Conseiller.class);
 	
+	@OneToMany(mappedBy="conseiller")
 	private List<Client> listeClient;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ger_cons")
+	@ManyToOne
 	private Gerant gerant;
 
 	/**

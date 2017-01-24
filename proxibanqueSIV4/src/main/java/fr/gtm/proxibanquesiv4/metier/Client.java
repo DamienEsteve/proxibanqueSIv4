@@ -11,10 +11,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -25,18 +26,19 @@ import javax.persistence.Transient;
  *
  */
 @Entity
+@Component
 public class Client extends Personne implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	@JoinColumn(name = "conseiller_id")
 	private Conseiller conseiller;
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Compte> listeCompte;
 	
+	@ManyToOne
 	private Coordonnees coordonneesClient;
 	
 	private boolean estSociete;

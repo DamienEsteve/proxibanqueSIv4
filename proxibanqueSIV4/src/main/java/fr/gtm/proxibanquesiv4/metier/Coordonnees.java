@@ -4,14 +4,18 @@
 package fr.gtm.proxibanquesiv4.metier;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -20,15 +24,18 @@ import org.apache.log4j.Logger;
  */
 @SuppressWarnings("serial")
 @Entity
-@Table
+@Component
 public class Coordonnees implements Serializable {
 
 	@Transient
 	private static Logger logger = Logger.getLogger(Coordonnees.class);
 
+	@OneToMany(mappedBy="coordonneesClient")
+	private List<Client> listeClient;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCoordonnées;
+	private int idCoordonnees;
 	/**
 	 * L'adresse de la personne. Cette adresse est entree et est modifiable par
 	 * le conseiller.
@@ -63,8 +70,8 @@ public class Coordonnees implements Serializable {
 	 * constructeur par defaut de la classe Coordonnees
 	 */
 	public Coordonnees() {
-		logger.info("Constructeur par défaut de la classe metier.Coordonnees");
-
+		logger.info("Constructeur par dï¿½faut de la classe metier.Coordonnees");
+		this.listeClient = new ArrayList<Client>();
 	}
 
 	/**
@@ -132,16 +139,16 @@ public class Coordonnees implements Serializable {
 	/**
 	 * @return the idC
 	 */
-	public int getIdCoordonnées() {
-		return idCoordonnées;
+	public int getIdCoordonnees() {
+		return idCoordonnees;
 	}
 
 	/**
 	 * @param idC
 	 *            the idC to set
 	 */
-	public void setIdCoordonnées(int idC) {
-		this.idCoordonnées = idC;
+	public void setIdCoordonnees(int idC) {
+		this.idCoordonnees = idC;
 	}
 
 	/*
@@ -156,7 +163,7 @@ public class Coordonnees implements Serializable {
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
 		result = prime * result + codePostal;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + idCoordonnées;
+		result = prime * result + idCoordonnees;
 		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
 		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
@@ -188,7 +195,7 @@ public class Coordonnees implements Serializable {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (idCoordonnées != other.idCoordonnées)
+		if (idCoordonnees != other.idCoordonnees)
 			return false;
 		if (telephone == null) {
 			if (other.telephone != null)
