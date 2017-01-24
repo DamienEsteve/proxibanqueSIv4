@@ -1,7 +1,13 @@
 package fr.gtm.proxibanquesiv4.metier;
 
+import javax.persistence.Entity;
+
+import org.springframework.stereotype.Component;
+
 @SuppressWarnings("serial")
-public class Utilisateur extends Personne{
+@Entity
+@Component
+public abstract class Utilisateur extends Personne{
 
 	private String login, password;
 	

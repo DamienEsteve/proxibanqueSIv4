@@ -8,11 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "COMPTE_TYPE")
+@Component
 public abstract class Compte implements Serializable {
 
 	@Transient
@@ -45,7 +46,6 @@ public abstract class Compte implements Serializable {
 	private double solde;
 
 	@ManyToOne
-	@JoinColumn(name = "idClient")
 	private Client client;
 
 	/**
