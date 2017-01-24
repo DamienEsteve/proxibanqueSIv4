@@ -1,6 +1,5 @@
 package fr.gtm.proxibanquesiv4.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
@@ -16,5 +15,4 @@ public interface IConseillerDao {
 	public List<Compte> selectAllComptes();
 	public List<Client> selectAllClients();
 	public void createVirement(Virement vir);
-	public List<Virement> selectVirementsFromDate(Date d);	
 }
