@@ -33,7 +33,6 @@ public class ConseillerDaoTestCase {
 
 	@Test
 	public void test1Creer() {
-		logger.info(">>>>>>>>>>>> instanciation du conseillerDao");
 		conseillerDao = appContext.getBean("conseillerDao", ConseillerDao.class);
 		Client client = new Client();
 //		client.setPassword(password);
