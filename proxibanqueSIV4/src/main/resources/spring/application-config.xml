@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-    <!-- recherche du fichier de properties -->
+	<!-- recherche du fichier de properties -->
 	<context:property-placeholder location="classpath*:sgbd.properties" />
-    <!-- Uncomment and add your base-package here:
-         <context:component-scan
-            base-package="org.springframework.samples.service"/>  -->
+	<!-- Uncomment and add your base-package here: <context:component-scan base-package="org.springframework.samples.service"/> -->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<!-- propriété driver -->
@@ -29,17 +26,20 @@
 		<!-- propriété mot de passe -->
 		<property name="password" value="${db.password}" />
 	</bean>
-	
+
 	<!-- bean de creation de la session factory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
-	<!-- la propriété dataSource de la sessionFactory  c'est le bean dataSource défini plus haut -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- la propriété dataSource de la sessionFactory c'est le bean dataSource 
+			défini plus haut -->
 		<property name="dataSource" ref="dataSource" />
-		<!-- la propriété du package à scanner ici business.model qui va chercher les classes à transformer en bean-->
+		<!-- la propriété du package à scanner ici business.model qui va chercher 
+			les classes à transformer en bean -->
 		<property name="packagesToScan" value="fr.gtm.proxibanquesiv4.metier" />
 		<!-- propriétés hibernate -->
 		<property name="hibernateProperties">
 			<props>
-			<!-- dialect -->
+				<!-- dialect -->
 				<prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
 				<!-- autogénération bdd -->
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
@@ -51,21 +51,28 @@
 			</props>
 		</property>
 	</bean>
-	
-	<!-- définition du gestionnaire de transactions faisant référence au bean sessionFactory -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+
+	<!-- définition du gestionnaire de transactions faisant référence au bean 
+		sessionFactory -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		
+
+	<!-- Configurations CSS/Bootstrap -->
+<!-- 	<mvc:resources mapping="/resources/**" location="path/resources/theme1/" />
+ -->
+
+
 	<!-- pour utiliser les annotations spring -->
-	<context:annotation-config/>
+	<context:annotation-config />
 	<!-- package contenant les classes annotées spring -->
 	<context:component-scan base-package="fr.gtm.proxibanquesiv4" />
-	<!-- prise en compte du gestionnaire de transaction pour @Transactional-->
+	<!-- prise en compte du gestionnaire de transaction pour @Transactional -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<aop:config proxy-target-class="true"/>
+	<aop:config proxy-target-class="true" />
 
 </beans>
