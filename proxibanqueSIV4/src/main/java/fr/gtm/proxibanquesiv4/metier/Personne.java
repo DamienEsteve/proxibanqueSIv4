@@ -49,7 +49,7 @@ public abstract class Personne implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idPersonne;
+	private int idPersonne;
 
 
 	/*--------------------------------------------------------------------------------*/
@@ -126,7 +126,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the idPersonne
 	 */
-	public long getIdPersonne() {
+	public int getIdPersonne() {
 		return idPersonne;
 	}
 
@@ -134,7 +134,7 @@ public abstract class Personne implements Serializable {
 	 * @param idPersonne
 	 *            the idPersonne to set
 	 */
-	public void setIdPersonne(long idPersonne) {
+	public void setIdPersonne(int idPersonne) {
 		this.idPersonne = idPersonne;
 	}
 
@@ -151,7 +151,7 @@ public abstract class Personne implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((civilite == null) ? 0 : civilite.hashCode());
-		result = prime * result + (int) (idPersonne ^ (idPersonne >>> 32));
+		result = prime * result + idPersonne;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
@@ -185,4 +185,8 @@ public abstract class Personne implements Serializable {
 			return false;
 		return true;
 	}
+	
+
+	
+
 }

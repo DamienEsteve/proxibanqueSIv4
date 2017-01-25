@@ -32,8 +32,7 @@ public class GerantDao implements IGerantDao {
 	
 	@Override
 	public List<Virement> selectVirementsFromDate(Date d) {
-		Query query = getSession().createQuery("Select vir from Virement vir where vir.date like:d");
-		query.setParameter("d", d);
+		Query query = getSession().createQuery("Select vir from Virement vir where vir.date like d");
 		return query.getResultList();
 	}
 
