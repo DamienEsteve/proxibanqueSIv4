@@ -10,9 +10,10 @@ public interface IConseillerDao {
 	public void createClient(Client cl);
 	public void updateClient(Client cl);
 	public void updateCompte(Compte cpt);
-	public List<Compte> selectComptesByClientId(Long idClient);
-	public List<Client> selectClientsByConsId(Long idCons);
+	public List<Compte> selectComptesByClientId(long idClient);
+	public List<Client> selectClientsByConsId(long idCons);
 	public List<Compte> selectAllComptes();
 	public List<Client> selectAllClients();
 	public void createVirement(Virement vir);
+	public void createCompte(Compte c);
 }

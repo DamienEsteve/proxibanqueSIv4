@@ -40,14 +40,16 @@ public class ConseillerDao implements IConseillerDao {
 	}
 
 	@Override
-	public List<Compte> selectComptesByClientId(Long idClient) {
-		Query query = getSession().createQuery("Select cpt from Compte cpt where cpt.idclient = idClient");
+	public List<Compte> selectComptesByClientId(long idClient) {
+		Query query = getSession().createQuery("Select cpt from Compte cpt where cpt.client.idPersonne =: idClient");
+		query.setParameter("idClient", idClient);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Client> selectClientsByConsId(Long idCons) {
-		Query query = getSession().createQuery("Select cl from Client cl where cl.idconseiller = idCons");
+	public List<Client> selectClientsByConsId(long idCons) {
+		Query query = getSession().createQuery("Select cl from Client cl where cl.conseiller.idPersonne =:idCons");
+		query.setParameter("idCons", idCons);
 		return query.getResultList();
 	}
 
@@ -66,5 +68,10 @@ public class ConseillerDao implements IConseillerDao {
 	@Override
 	public void createVirement(Virement vir) {
 		getSession().save(vir);
+	}
+	
+	@Override
+	public void createCompte(Compte c) {
+		getSession().save(c);
 	}
 }
