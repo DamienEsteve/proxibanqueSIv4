@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
@@ -14,13 +15,13 @@ import fr.gtm.proxibanquesiv4.metier.Client;
 public class ConseillerDaoTestCase {
 
 	private static Logger logger = Logger.getLogger(ConseillerDaoTestCase.class);
-	private static ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("application-config.xml");
+	private static ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/application-config.xml");
 //	private static IConseillerDao conseillerDao;
 	private static long id = 0;
 	private static String password = "test";
 	private static String login = "test";
-	private static String nom = "Jamin";
-	private static String prenom = "Guillaume";
+	private static String nom = "Esteve";
+	private static String prenom = "Damien";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -32,7 +33,7 @@ public class ConseillerDaoTestCase {
 
 	@Test
 	public void test1Creer() {
-		IConseillerDao conseillerDao = appContext.getBean("conseillerDao", ConseillerDao.class);
+		IConseillerDao conseillerDao = (ConseillerDao) appContext.getBean("conseillerDao", ConseillerDao.class);
 		Client client = new Client();
 //		client.setPassword(password);
 //		client.setLogin(login);
