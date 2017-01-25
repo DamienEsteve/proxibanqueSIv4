@@ -120,7 +120,7 @@
 <!-- 			<version>1.1.1</version> -->
 <!-- 		</dependency> -->
 			<dependency>
-			  <!-- Provided by Tomcat, but needed for compilation -->
+<!-- 			  Provided by Tomcat, but needed for compilation -->
 			  <groupId>javax</groupId>
 			  <artifactId>javaee-web-api</artifactId>
 			  <version>7.0</version>
