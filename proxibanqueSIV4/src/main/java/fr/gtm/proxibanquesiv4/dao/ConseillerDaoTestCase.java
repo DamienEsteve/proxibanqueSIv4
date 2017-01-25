@@ -14,8 +14,8 @@ import fr.gtm.proxibanquesiv4.metier.Client;
 public class ConseillerDaoTestCase {
 
 	private static Logger logger = Logger.getLogger(ConseillerDaoTestCase.class);
-	private static ClassPathXmlApplicationContext appContext;
-	private static IConseillerDao conseillerDao;
+	private static ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("application-config.xml");
+//	private static IConseillerDao conseillerDao;
 	private static long id = 0;
 	private static String password = "test";
 	private static String login = "test";
@@ -24,7 +24,6 @@ public class ConseillerDaoTestCase {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		appContext = new ClassPathXmlApplicationContext("src/main/resources/spring/application-config.xml");
 	}
 
 	@AfterClass
@@ -33,7 +32,7 @@ public class ConseillerDaoTestCase {
 
 	@Test
 	public void test1Creer() {
-		conseillerDao = appContext.getBean("conseillerDao", ConseillerDao.class);
+		IConseillerDao conseillerDao = appContext.getBean("conseillerDao", ConseillerDao.class);
 		Client client = new Client();
 //		client.setPassword(password);
 //		client.setLogin(login);
