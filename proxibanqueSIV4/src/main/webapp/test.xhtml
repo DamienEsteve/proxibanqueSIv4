@@ -7,15 +7,41 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Accueil</title>
+	<title>test</title>
 	<h:outputStylesheet library="css"
 		name="src/main/webapp/css/bootstrap.min.css" />
-	<h:outputStylesheet library="css" name="src/main/webapp/css/styleProxi1_index.css" />
+	<h:outputStylesheet library="css"
+		name="src/main/webapp/css/styleProxi1_index.css" />
 </h:head>
 <h:body>
-<!-- 	<ui:composition template="/template/connexion.xhtml">
+	<!-- 	<ui:composition template="/template/connexion.xhtml">
 	</ui:composition> -->
-	
-	Bonjour
+	<h:form>
+		<h:dataTable class="table"
+			value="#{conseillerbean.ListeAllClients()}" var="c">
+			<h:column>
+				<f:facet name="header"> Id Client </f:facet>
+	    				#{c.id}
+	    			</h:column>
+			<h:column>
+				<f:facet name="header"> Civilité </f:facet>
+	    				#{c.civilite}
+	    			</h:column>
+
+			<h:column>
+				<f:facet name="header"> Prénom </f:facet>
+	    				#{c.prenom}
+	    			</h:column>
+			<h:column>
+				<f:facet name="header"> Nom </f:facet>
+	    				#{c.nom}
+	    			</h:column>
+
+			<h:column>
+				<f:facet name="header"> Nom </f:facet>
+	    				#{c.estSociete}
+	    			</h:column>
+		</h:dataTable>
+	</h:form>
 </h:body>
 </html>
