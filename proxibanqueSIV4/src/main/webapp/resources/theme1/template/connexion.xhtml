@@ -8,22 +8,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 
-	<h3>Connexion</h3>
-
-<!-- 	<nav class="row">
-	<div>
-		<ul class="nav-pills nav-justified">
-			<li class="menu_ind "><a href="#">
-					Accueil </a></li>
-			<li class="menu_ind "><a href="#">
-					Connexion </a></li>
-			<li class="menu_ind "><a href="#"> Nous
-					Contacter </a></li>
-		</ul>
-	</div>
-	</nav>
- -->
-	<h4>Entrer vos codes de connexion :</h4>
+	<h3>Bienvenue sur le site de Proxibanque, une banque proche de ses clients.</h3>
+	<h4>Entrez vos codes de connexion :</h4>
 
 	<h:form>
 		<fieldset>
@@ -31,14 +17,13 @@
 			<div id="identifiant">
 				<label for="idtf">Identifiant : </label> 
 				<input type="text" name="idtf" id="idtf" /><br /> 
-					
+				
 				<label for="MotDePasse">Mot de passe : </label> 
-				<input type="password" name="MotDePasse"id="MotDePasse" /><br />
+				<input type="password" name="MotDePasse" id="MotDePasse" /><br />
 			</div>
 
-			<p id="Bouton">
-				<input type="submit" value="#" /><br />
-			</p>
+			<h:commandButton action="" value="Valider" />
+
 		</fieldset>
 	</h:form>
 
