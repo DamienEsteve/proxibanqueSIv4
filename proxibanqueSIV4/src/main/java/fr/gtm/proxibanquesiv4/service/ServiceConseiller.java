@@ -2,6 +2,8 @@ package fr.gtm.proxibanquesiv4.service;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,12 +36,12 @@ public class ServiceConseiller implements IServiceConseiller {
 	}
 
 	@Override
-	public List<Compte> selectComptesByClientId(Long idClient) {
+	public List<Compte> selectComptesByClientId(long idClient) {
 		return daoc.selectComptesByClientId(idClient);
 	}
 
 	@Override
-	public List<Client> selectClientsByConsId(Long idCons) {
+	public List<Client> selectClientsByConsId(long idCons) {
 		return daoc.selectClientsByConsId(idCons);
 	}
 
@@ -58,4 +60,18 @@ public class ServiceConseiller implements IServiceConseiller {
 		daoc.createVirement(vir);
 	}
 
+	@Override
+	public void createCompte(Compte c) {
+		daoc.createCompte(c);
+	}
+	
+	@Override
+	public Compte selectCompteById(long idCpt) {
+		return daoc.selectCompteById(idCpt);
+	}
+	
+	@Override
+	public long SelectIdByLoginConseiller(String l){
+		return daoc.SelectIdByLoginConseiller(l);
+	}
 }

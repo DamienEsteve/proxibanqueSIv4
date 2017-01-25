@@ -26,15 +26,21 @@ public class GerantDao implements IGerantDao {
 	
 	@Override
 	public List<Conseiller> selectAllConseillers() {
-		Query query = getSession().createQuery("Select c from Conseiller");
+		Query query = getSession().createQuery("Select c from Conseiller c");
 		return query.getResultList();
 	}
 	
 	@Override
 	public List<Virement> selectVirementsFromDate(Date d) {
-		Query query = getSession().createQuery("Select vir from Virement vir where vir.date like:d");
+		Query query = getSession().createQuery("Select vir from Virement vir where vir.date =:d");
 		query.setParameter("d", d);
 		return query.getResultList();
 	}
-
+	
+	@Override
+	public long SelectIdByLoginGerant(String l){
+		Query query = getSession().createQuery("Select g.idPersonne from Gerant g where g.login =:l");
+		query.setParameter("l", l);
+		return (long) query.getSingleResult();
+	}
 }

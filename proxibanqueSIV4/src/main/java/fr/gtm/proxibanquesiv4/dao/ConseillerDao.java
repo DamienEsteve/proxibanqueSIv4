@@ -60,12 +60,6 @@ public class ConseillerDao implements IConseillerDao {
 	}
 
 	@Override
-	public Compte selectCompteById(long idCpt) {
-		Compte c = (Compte) getSession().get(Compte.class, idCpt);
-		return c;
-	}
-
-	@Override
 	public List<Client> selectAllClients() {
 		Query query = getSession().createQuery("Select cl from Client cl");
 		return query.getResultList();
@@ -85,5 +79,18 @@ public class ConseillerDao implements IConseillerDao {
 	@Override
 	public void createCompte(Compte c) {
 		getSession().save(c);
+	}
+	
+	@Override
+	public Compte selectCompteById(long idCpt) {
+		Compte c = (Compte) getSession().get(Compte.class, idCpt);
+		return c;
+	}
+	
+	@Override
+	public long SelectIdByLoginConseiller(String l){
+		Query query = getSession().createQuery("Select c.idPersonne from Conseiller c where c.login =:l");
+		query.setParameter("l", l);
+		return (long) query.getSingleResult();
 	}
 }

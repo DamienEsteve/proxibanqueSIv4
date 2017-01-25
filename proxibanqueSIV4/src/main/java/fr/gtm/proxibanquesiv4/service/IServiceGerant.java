@@ -7,7 +7,7 @@ import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
 public interface IServiceGerant {
-
 	public List<Conseiller> selectAllConseillers();
 	public List<Virement> selectVirementsFromDate(Date d);
+	public long SelectIdByLoginGerant(String l);
 }

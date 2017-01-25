@@ -64,23 +64,24 @@ public class Lanceur {
 			System.out.println("comptes : "+cpt.getNumeroCompte()+" "+cpt.getSolde());
 		}
 		
-		CompteCourant cc1 = (CompteCourant) conseillerDao.selectCompteById(1l);
-		CompteCourant cc2 = (CompteCourant) conseillerDao.selectCompteById(3l);
+//		CompteCourant cc1 = (CompteCourant) conseillerDao.selectCompteById(1l);
+//		CompteCourant cc2 = (CompteCourant) conseillerDao.selectCompteById(3l);
+//		
+//		Virement vir1 = new Virement();
+//		vir1.setCompteCrediteur(cc1);
+//		vir1.setCompteDebiteur(cc2);
+//		vir1.setMontant(500);
+//		vir1.setDateExecution(new Date());
+//		conseillerDao.createVirement(vir1);
+//		Virement vir2 = new Virement();
+//		vir2.setCompteCrediteur(cc2);
+//		vir2.setCompteDebiteur(cc1);
+//		vir2.setMontant(100);
+//		vir2.setDateExecution(new Date());
+//		conseillerDao.createVirement(vir2);
 		
-		Virement vir1 = new Virement();
-		vir1.setCompteCrediteur(cc1);
-		vir1.setCompteDebiteur(cc2);
-		vir1.setMontant(500);
-		vir1.setDateExecution(new Date());
-		conseillerDao.createVirement(vir1);
-		Virement vir2 = new Virement();
-		vir2.setCompteCrediteur(cc2);
-		vir2.setCompteDebiteur(cc1);
-		vir2.setMontant(100);
-		vir2.setDateExecution(new Date());
-		conseillerDao.createVirement(vir2);
-		
-		
+		long i = conseillerDao.SelectIdByLoginConseiller("2jg");
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> i = "+i+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }
 
