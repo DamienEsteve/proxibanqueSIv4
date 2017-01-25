@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
-		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- recherche du fichier de properties -->
 	<context:property-placeholder location="classpath*:sgbd.properties" />
@@ -62,8 +62,19 @@
 	</bean>
 
 	<!-- Configurations CSS/Bootstrap -->
-<!-- 	<mvc:resources mapping="/resources/**" location="path/resources/theme1/" />
- -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.xhtml</value>
+		</property>
+	</bean>
+
+
+	<mvc:resources mapping="/resources/**" location="path/resources/theme1/" />
+	<mvc:annotation-driven />
 
 
 	<!-- pour utiliser les annotations spring -->

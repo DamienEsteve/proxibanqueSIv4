@@ -7,32 +7,30 @@
 
 <h:head>
 	<!-- permet de déclarer une ressource qui se trouve dans le dossier css du dossier parent resources -->
-	<h:outputStylesheet library="css"
-		name="src/main/webapp/css/bootstrap.min.css" />
-	<h:outputStylesheet library="css"
-		name="src/main/webapp/css/styleProxi1_index.css" />
+	<link rel="stylesheet" href="./resources/theme1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./resources/theme1/css/styleProxi1_index.css" />
 </h:head>
 <h:body>
 	<div id="page">
-		<!-- La div avec le id= header, Represente le header 
+		<!-- La div avec le id= header, Represente le header  -->
 		<div id="header">
 			<ui:insert name="header">
-				<ui:include src="/template/header.xhtml">
+				<ui:include src="/resources/theme1/template/header.xhtml">
 				</ui:include>
 			</ui:insert>
 		</div>
 
-		<!-- La div avec le id= content, Represente le contenu spécifique à chaque vue  -->
+		<!-- La div avec le id= content, Represente le contenu spécifique à chaque vue 
 		<div id="content">
 			<ui:insert name="content">
-				<ui:include src="/template/connexion.xhtml" />
+				<ui:include src="/resources/theme1/template/connexion.xhtml"/>
 			</ui:insert>
-		</div>
+		</div> -->
 
 		<!-- La div avec le id= footer, Represente le contenu spécifique au pied de page par défaut  -->
 		<div id="footer">
 			<ui:insert name="footer">
-				<ui:include src="/template/footer.xhtml">
+				<ui:include src="/resources/theme1/template/footer.xhtml">
 					<ui:param name="auteur" value="Damien Guillaume Kévin Séverine" />
 				</ui:include>
 			</ui:insert>
