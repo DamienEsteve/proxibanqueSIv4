@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,8 @@ import org.springframework.stereotype.Controller;
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
-@Controller("conseillerbean")
+@ManagedBean
+@Named("conseillerbean")
 @SessionScoped
 public class ConseillerDTO implements Serializable {
 
@@ -40,4 +43,9 @@ public class ConseillerDTO implements Serializable {
 	public List<Client> ListeClients(long id) {
 		return listeclients = serviceconseiller.selectClientsByConsId(id);
 	}
+	
+	public List<Client> ListeAllClients() {
+		return listeclients = serviceconseiller.selectAllClients();
+	}
+	
 }
