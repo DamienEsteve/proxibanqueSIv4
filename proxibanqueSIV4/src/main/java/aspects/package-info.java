@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Adminl
- *
- */
-package aspects;
