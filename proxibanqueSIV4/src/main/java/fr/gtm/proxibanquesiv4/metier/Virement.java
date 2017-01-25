@@ -2,6 +2,7 @@ package fr.gtm.proxibanquesiv4.metier;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,10 @@ public class Virement {
 	@JoinColumn(name="cpt_credit")
 	private Compte compteCrediteur;
 	
+	@Column(nullable=false)
 	private Date dateExecution;
 	
+	@Column(nullable=false)
 	private double montant;
 	
 	public Virement() {

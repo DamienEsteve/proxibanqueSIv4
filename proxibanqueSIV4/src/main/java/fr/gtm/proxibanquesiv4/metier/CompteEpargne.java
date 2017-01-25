@@ -32,7 +32,7 @@ public class CompteEpargne extends Compte {
 	 * tauxRemuneration correspond au taux de r�mun�ration du compte (�
 	 * multiplier par 100 pour l'obtenir en pourcentage).
 	 */
-	@Column(name="taux")
+	@Column(name="taux", nullable=false)
 	private double tauxRemuneration = 0.03;
 
 	/**

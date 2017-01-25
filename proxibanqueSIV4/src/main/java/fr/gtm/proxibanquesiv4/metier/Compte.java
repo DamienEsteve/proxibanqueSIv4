@@ -3,8 +3,11 @@ package fr.gtm.proxibanquesiv4.metier;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -38,11 +41,13 @@ public abstract class Compte implements Serializable {
 	 * Le numero de Compte. Chaque num�ro est unique.
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long numeroCompte;
 
 	/**
 	 * Le solde du compte.
 	 */
+	@Column(nullable=false)
 	private double solde;
 
 	@ManyToOne
@@ -57,6 +62,7 @@ public abstract class Compte implements Serializable {
 	 * Le boolean est vrai si le compte est un compte d'entreprise, faux s'il
 	 * s'agit d'un compte particulier
 	 */
+	@Column(nullable=false)
 	private boolean compteEntreprise = false;
 
 	/**
