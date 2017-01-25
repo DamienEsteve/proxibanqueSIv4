@@ -32,7 +32,7 @@ public class CompteCourant extends Compte {
 	 * authDecouvert correspond � la valeur en euro de l'autorisation de
 	 * d�couvert du compte courant.
 	 */
-	@Column(name="taux")
+	@Column(name="decouvert", nullable=false)
 	private double authDecouvert = 1000;
 
 	public CompteCourant() {

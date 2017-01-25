@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -41,6 +42,7 @@ public class Client extends Personne implements Serializable {
 	@ManyToOne
 	private Coordonnees coordonneesClient;
 	
+	@Column(nullable=false)
 	private boolean estSociete;
 
 	/**

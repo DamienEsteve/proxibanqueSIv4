@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,30 +41,35 @@ public class Coordonnees implements Serializable {
 	 * L'adresse de la personne. Cette adresse est entree et est modifiable par
 	 * le conseiller.
 	 */
+	@Column(nullable=false)
 	private String adresse;
 
 	/**
 	 * Le numero de code postal de la personne. Ce code postal est entre et est
 	 * modifiable par le conseiller.
 	 */
+	@Column(nullable=false)
 	private int codePostal;
 
 	/**
 	 * Le nom de la ville ou habite la personne. Le nom de la ville est entre et
 	 * est modifiable par le conseiller.
 	 */
+	@Column(nullable=false)
 	private String ville;
 
 	/**
 	 * Le numero de telephone de la personne. Ce numero est entre et est
 	 * modifiable par le conseiller.
 	 */
+	@Column(nullable=false)
 	private String telephone;
 
 	/**
 	 * L'email de la personne. Cet email est entre et est modifiable par le
 	 * conseiller.
 	 */
+	@Column(nullable=false, unique=true)
 	private String email;
 
 	/**
