@@ -49,7 +49,17 @@ public class ConseillerDTO implements Serializable {
 	public void setListeclients(List<Client> listeclients) {
 		this.listeclients = listeclients;
 	}
-	public List<Client> ListeClients(long id) {
+	public List<Client> ListeClients() {
+		/*
+		 * id= serviceconseiller.getIdFromLogin(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+		 * 
+		 */
+		String login=FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+		if(login.toUpperCase().equals("VADOR")){
+			this.id=1;
+		} else if(login.toUpperCase().equals("LEIA")){
+			this.id=3;
+		}
 		return listeclients = serviceconseiller.selectClientsByConsId(id);
 	}
 	
@@ -71,6 +81,9 @@ public class ConseillerDTO implements Serializable {
 		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getContext());
 		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getContextName());
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		System.out.println(req.isUserInRole("conseiller"));
+		System.out.println(req.isUserInRole("conseilleelkthuseor"));
 		req.getSession().invalidate();
 		req.logout();
 //		HttpServletResponse resp =  (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
