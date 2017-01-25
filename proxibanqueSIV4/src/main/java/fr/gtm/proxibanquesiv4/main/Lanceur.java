@@ -17,7 +17,8 @@ import fr.gtm.proxibanquesiv4.metier.Virement;
 
 public class Lanceur {
 
-	private static ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring/application-config.xml");
+	private static ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
+			"application-config.xml");
 
 	public static void main(String[] args) {
 
@@ -30,6 +31,7 @@ public class Lanceur {
 		String prenom2 = "Guillaume";
 		
 		// 2 - Récupération des beans DAO (des objets)
+
 		IConseillerDao conseillerDao = (ConseillerDao) appContext.getBean("conseillerDao", ConseillerDao.class);
 		IGerantDao gerantDao = (GerantDao) appContext.getBean("gerantDao", GerantDao.class);
 		
@@ -39,6 +41,7 @@ public class Lanceur {
 		// Creation de deux clients en BDD
 		Client client1 = new Client();
 		Client client2 = new Client();
+
 //		client.setPassword(password);
 //		client.setLogin(login);
 		client1.setNom(nom1);
