@@ -109,16 +109,23 @@
 		</dependency>
 
 		<!-- JSF -->
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-api</artifactId>
-			<version>2.2.11</version>
-		</dependency>
-		<dependency>
-			<groupId>myfaces</groupId>
-			<artifactId>myfaces-impl</artifactId>
-			<version>1.1.1</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.myfaces.core</groupId> -->
+<!-- 			<artifactId>myfaces-api</artifactId> -->
+<!-- 			<version>2.2.11</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>myfaces</groupId> -->
+<!-- 			<artifactId>myfaces-impl</artifactId> -->
+<!-- 			<version>1.1.1</version> -->
+<!-- 		</dependency> -->
+			<dependency>
+			  <!-- Provided by Tomcat, but needed for compilation -->
+			  <groupId>javax</groupId>
+			  <artifactId>javaee-web-api</artifactId>
+			  <version>7.0</version>
+			  <scope>provided</scope>
+			</dependency>
 
 
 		<!-- Test Artifacts -->
