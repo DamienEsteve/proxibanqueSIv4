@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../resources/theme1/template/layout.xhtml">
+<ui:define name="content">
+	<h3>Accueil Conseiller</h3>
+	<h4>Liste des Clients de l'Agence dont vous êtes le conseiller :</h4>
+	<h:form>
+		<h:dataTable class="table"
+			value="#{conseillerbean.ListeClients()}" var="c">
+			<h:column>
+				<f:facet name="header"> Id Client </f:facet>
+	    				#{c.idPersonne}
+	    			</h:column>
+			<h:column>
+				<f:facet name="header"> Civilité </f:facet>
+	    				#{c.civilite}
+	    			</h:column>
+
+			<h:column>
+				<f:facet name="header"> Prénom </f:facet>
+	    				#{c.prenom}
+	    			</h:column>
+			<h:column>
+				<f:facet name="header"> Nom </f:facet>
+	    				#{c.nom}
+	    			</h:column>
+
+			<h:column>
+				<f:facet name="header"> Nom </f:facet>
+	    				#{c.estSociete}
+	    			</h:column>
+		</h:dataTable>
+	</h:form>
+</ui:define>
+</ui:composition>
+

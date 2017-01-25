@@ -3,7 +3,7 @@
   <display-name>proxibanqueSIV4</display-name>
   
   <welcome-file-list>
-    <welcome-file>testjaas.xhtml</welcome-file>
+    <welcome-file>accueil.xhtml</welcome-file>
   </welcome-file-list>
   
   <context-param>
@@ -63,13 +63,26 @@
     <display-name>Test authentification Tomcat</display-name>
     <web-resource-collection>
       <web-resource-name>Pages protegees</web-resource-name>
-      <url-pattern>/admin/*</url-pattern>
+      <url-pattern>/conseiller/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <description>Role des administrateurs</description>
       <role-name>conseiller</role-name>
     </auth-constraint>
   </security-constraint>
+  
+  <security-constraint>
+    <display-name>Test authentification Tomcat</display-name>
+    <web-resource-collection>
+      <web-resource-name>Pages protegees</web-resource-name>
+      <url-pattern>/gerant/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Role des administrateurs</description>
+      <role-name>gerant</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
   <login-config>
     <auth-method>BASIC</auth-method>
     <realm-name>espace admin</realm-name>
