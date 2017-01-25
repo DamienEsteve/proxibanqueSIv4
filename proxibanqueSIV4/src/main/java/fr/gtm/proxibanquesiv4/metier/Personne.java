@@ -6,6 +6,7 @@ package fr.gtm.proxibanquesiv4.metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,14 +35,17 @@ public abstract class Personne implements Serializable {
 	/**
 	 * Le nom du client. Ce nom est entr� et est modifiable par le conseiller.
 	 */
+	@Column(nullable=false)
 	private String nom;
 
 	/**
 	 * Le pr�nom du client. Ce pr�nom est entr� et est modifiable par le
 	 * conseiller.
 	 */
+	@Column(nullable=false)
 	private String prenom;
 
+	@Column(nullable=false)
 	private String civilite;
 	
 	/**
@@ -49,7 +53,7 @@ public abstract class Personne implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idPersonne;
+	private long idPersonne;
 
 
 	/*--------------------------------------------------------------------------------*/
@@ -126,7 +130,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the idPersonne
 	 */
-	public int getIdPersonne() {
+	public long getIdPersonne() {
 		return idPersonne;
 	}
 
@@ -151,7 +155,7 @@ public abstract class Personne implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((civilite == null) ? 0 : civilite.hashCode());
-		result = prime * result + idPersonne;
+		result = prime * result + (int) (idPersonne ^ (idPersonne >>> 32));
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
@@ -185,8 +189,4 @@ public abstract class Personne implements Serializable {
 			return false;
 		return true;
 	}
-	
-
-	
-
 }
