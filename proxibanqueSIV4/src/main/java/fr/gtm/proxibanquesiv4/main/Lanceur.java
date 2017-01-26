@@ -1,5 +1,6 @@
 package fr.gtm.proxibanquesiv4.main;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -64,24 +65,65 @@ public class Lanceur {
 			System.out.println("comptes : "+cpt.getNumeroCompte()+" "+cpt.getSolde());
 		}
 		
-//		CompteCourant cc1 = (CompteCourant) conseillerDao.selectCompteById(1l);
-//		CompteCourant cc2 = (CompteCourant) conseillerDao.selectCompteById(3l);
-//		
-//		Virement vir1 = new Virement();
-//		vir1.setCompteCrediteur(cc1);
-//		vir1.setCompteDebiteur(cc2);
-//		vir1.setMontant(500);
-//		vir1.setDateExecution(new Date());
-//		conseillerDao.createVirement(vir1);
-//		Virement vir2 = new Virement();
-//		vir2.setCompteCrediteur(cc2);
-//		vir2.setCompteDebiteur(cc1);
-//		vir2.setMontant(100);
-//		vir2.setDateExecution(new Date());
-//		conseillerDao.createVirement(vir2);
+		CompteCourant cc1 = (CompteCourant) conseillerDao.selectCompteById(1l);
+		CompteCourant cc2 = (CompteCourant) conseillerDao.selectCompteById(3l);
+		CompteCourant cc3 = (CompteCourant) conseillerDao.selectCompteById(5l);
+		CompteCourant cc4 = (CompteCourant) conseillerDao.selectCompteById(7l);
 		
-		long i = conseillerDao.SelectIdByLoginConseiller("2jg");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> i = "+i+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		Date date1 = new Date();
+		Date referenceDate1 = new Date();
+		Calendar c1 = Calendar.getInstance();
+		c1.setTime(referenceDate1);
+		c1.add(Calendar.MONTH, -6);
+		date1 = c1.getTime();
+		Date date2 = new Date();
+		Date referenceDate2 = new Date();
+		Calendar c2 = Calendar.getInstance();
+		c2.setTime(referenceDate2);
+		c2.add(Calendar.MONTH, -1);
+		date2 = c2.getTime();
+		
+		Virement vir1 = new Virement();
+		vir1.setCompteCrediteur(cc1);
+		vir1.setCompteDebiteur(cc2);
+		vir1.setMontant(500);
+		vir1.setDateExecution(date1);
+		conseillerDao.createVirement(vir1);
+		Virement vir2 = new Virement();
+		vir2.setCompteCrediteur(cc2);
+		vir2.setCompteDebiteur(cc1);
+		vir2.setMontant(100);
+		vir2.setDateExecution(date1);
+		conseillerDao.createVirement(vir2);
+		Virement vir3 = new Virement();
+		vir3.setCompteCrediteur(cc1);
+		vir3.setCompteDebiteur(cc4);
+		vir3.setMontant(200);
+		vir3.setDateExecution(date1);
+		conseillerDao.createVirement(vir3);
+		Virement vir4 = new Virement();
+		vir4.setCompteCrediteur(cc3);
+		vir4.setCompteDebiteur(cc1);
+		vir4.setMontant(50);
+		vir4.setDateExecution(date1);
+		conseillerDao.createVirement(vir4);
+		Virement vir5 = new Virement();
+		vir5.setCompteCrediteur(cc3);
+		vir5.setCompteDebiteur(cc2);
+		vir5.setMontant(200);
+		vir5.setDateExecution(date1);
+		conseillerDao.createVirement(vir5);
+		Virement vir6 = new Virement();
+		vir6.setCompteCrediteur(cc4);
+		vir6.setCompteDebiteur(cc2);
+		vir6.setMontant(400);
+		vir6.setDateExecution(date1);
+		conseillerDao.createVirement(vir6);
+		
+		List<Virement> virements = gerantDao.selectVirementsFromDate(date2);
+		for (Virement v : virements){
+			System.out.println(">>>>>>>>>>>>>>>>>>>> virements : "+v.getMontant()+"€");
+		}
 	}
 }
 
