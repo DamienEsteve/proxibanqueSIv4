@@ -11,17 +11,19 @@ import org.springframework.stereotype.Controller;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
+import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
 @Controller("clientbean")
 @SessionScoped
 public class ClientDTO implements Serializable {
 
-	private long id;
+	private long id, idC;
 	private String telephone;
 	private String nom, prenom, email, adresse, ville, civilite;
 	int cp;
 	private List<Compte> listecomptes;
+	private Conseiller conseiller;
 
 	private static Logger logger = Logger.getLogger(ClientDTO.class);
 
@@ -38,6 +40,13 @@ public class ClientDTO implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public long getIdC() {
+		return idC;
+	}
+	public void setIdC(long idC) {
+		this.idC = idC;
 	}
 
 	public String getTelephone() {
@@ -104,9 +113,6 @@ public class ClientDTO implements Serializable {
 		this.listecomptes = listecomptes;
 		return listecomptes;
 	}
-
-	
-	
 	
 	public String getCivilite() {
 		return civilite;
@@ -114,6 +120,14 @@ public class ClientDTO implements Serializable {
 
 	public void setCivilite(String civilite) {
 		this.civilite = civilite;
+	}
+	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
 	}
 
 	public void creerClient(Client client) {
@@ -124,8 +138,8 @@ public class ClientDTO implements Serializable {
 		serviceconseiller.updateClient(client);
 	}
 	
-	public List<Compte> ListeComptesParClient(long id) {
-		return setListecomptes(serviceconseiller.selectComptesByClientId(id));
+	public List<Compte> ListeComptesParClient() {
+		return setListecomptes(serviceconseiller.selectComptesByClientId(this.id));
 	}
 	
 	public List<Compte> ListeAllComptes() {
@@ -134,16 +148,22 @@ public class ClientDTO implements Serializable {
 	public String goModifCli(){
 		return "modifclient?faces-redirect=true";
 	}
+	public String goCompteCli(){
+		return "listecompte?faces-redirect=true";
+	}
 	public String modifClient(){
 		Client cl = new Client();
 		cl.setNom(this.nom);
 		cl.setPrenom(this.prenom);
+		cl.setIdPersonne(this.id);
 		cl.getCoordonneesClient().setAdresse(this.adresse);
 		cl.getCoordonneesClient().setCodePostal(this.cp);
 		cl.getCoordonneesClient().setEmail(this.email);
 		cl.getCoordonneesClient().setTelephone(this.telephone);
 		cl.getCoordonneesClient().setVille(this.ville);
+		cl.getCoordonneesClient().setIdCoordonnees(this.idC);
 		cl.setCivilite(this.civilite);
+		cl.setConseiller(this.conseiller);
 		serviceconseiller.updateClient(cl);
 		return "indexConseiller?faces-redirect=true";
 	}

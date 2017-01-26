@@ -31,6 +31,7 @@ public class ConseillerDao implements IConseillerDao {
 
 	@Override
 	public void updateClient(Client cl) {
+		System.out.println(cl);
 		getSession().update(cl);
 	}
 
@@ -41,7 +42,7 @@ public class ConseillerDao implements IConseillerDao {
 
 	@Override
 	public List<Compte> selectComptesByClientId(long idClient) {
-		Query query = getSession().createQuery("Select cpt from Compte cpt where cpt.client.idPersonne =: idClient");
+		Query query = getSession().createQuery("Select cpt from Compte cpt where cpt.client.idPersonne =:idClient");
 		query.setParameter("idClient", idClient);
 		return query.getResultList();
 	}

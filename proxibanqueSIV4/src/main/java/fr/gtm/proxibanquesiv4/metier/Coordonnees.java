@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +32,11 @@ public class Coordonnees implements Serializable {
 	@Transient
 	private static Logger logger = Logger.getLogger(Coordonnees.class);
 
-	@OneToMany(mappedBy="coordonneesClient")
+	@OneToMany(mappedBy="coordonneesClient", cascade=CascadeType.ALL)
 	private List<Client> listeClient;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idCoordonnees;
 	/**
 	 * L'adresse de la personne. Cette adresse est entree et est modifiable par
@@ -157,19 +158,11 @@ public class Coordonnees implements Serializable {
 		this.idCoordonnees = idC;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
-		result = prime * result + codePostal;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (idCoordonnees ^ (idCoordonnees >>> 32));
-		result = prime * result + ((listeClient == null) ? 0 : listeClient.hashCode());
-		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
-		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
 	}
 
@@ -182,36 +175,13 @@ public class Coordonnees implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coordonnees other = (Coordonnees) obj;
-		if (adresse == null) {
-			if (other.adresse != null)
-				return false;
-		} else if (!adresse.equals(other.adresse))
-			return false;
-		if (codePostal != other.codePostal)
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (idCoordonnees != other.idCoordonnees)
-			return false;
-		if (listeClient == null) {
-			if (other.listeClient != null)
-				return false;
-		} else if (!listeClient.equals(other.listeClient))
-			return false;
-		if (telephone == null) {
-			if (other.telephone != null)
-				return false;
-		} else if (!telephone.equals(other.telephone))
-			return false;
-		if (ville == null) {
-			if (other.ville != null)
-				return false;
-		} else if (!ville.equals(other.ville))
 			return false;
 		return true;
 	}
+
+	
+
+	
 
 }

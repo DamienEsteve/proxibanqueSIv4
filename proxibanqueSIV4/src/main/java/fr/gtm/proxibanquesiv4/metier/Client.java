@@ -113,14 +113,10 @@ public class Client extends Personne implements Serializable {
 		return "Client [nom=" + super.getNom() + ", prenom=" + super.getPrenom() + ", adresse="
 				+ getCoordonneesClient().getAdresse() + ", codePostal=" + getCoordonneesClient().getCodePostal() + ", ville="
 				+ getCoordonneesClient().getVille() + ", telephone=" + getCoordonneesClient().getTelephone() + ", email="
-				+ getCoordonneesClient().getEmail() + "]";
+				+ getCoordonneesClient().getEmail() + "idco : "+getCoordonneesClient().getIdCoordonnees()+"]";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	
 
 
 }
