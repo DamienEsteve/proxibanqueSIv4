@@ -8,6 +8,8 @@ import fr.gtm.proxibanquesiv4.metier.Virement;
 
 public interface IGerantDao {
 	public List<Conseiller> selectAllConseillers();
+
 	public List<Virement> selectVirementsFromDate(Date d);
+
 	public long SelectIdByLoginGerant(String l);
 }
