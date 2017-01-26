@@ -86,4 +86,11 @@
 
 	<aop:config proxy-target-class="true" />
 
+	<bean id="VirementIntercepteur" class="fr.gtm.proxibanquesiv4.aop.VirementIntercepteur"/>
+	
+	<!-- Balises mise en place AOP -->
+	<aop:aspectj-autoproxy/>
+	<aop:config>
+		<aop:aspect ref="virementIntercepteur"></aop:aspect>
+	</aop:config>
 </beans>

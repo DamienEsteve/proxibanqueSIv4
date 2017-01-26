@@ -1,27 +1,31 @@
 package fr.gtm.proxibanquesiv4.aop;
 
-import org.apache.log4j.Logger;
-import org.aspectj.lang.annotation.After;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 
+import fr.gtm.proxibanquesiv4.metier.Virement;
 
 @Aspect
 public class VirementIntercepteur {
 	
-	private static Logger logger = Logger.getLogger(VirementIntercepteur.class);
-	
-	@Pointcut("execution(* *.createVirement(..))")
-	public void virement() {}
-
-	@Before("virement()")
-	public void InitialisationVirement() {
-		logger.info("********** Virement initialisé **********");
-	}
-	
-	@After("virement()")
-	public void RealisationViremennt() {
-		logger.info("********** Virement effectué **********");
+	@Before("execution(* *.createVirement(..))")
+	public void logBefore(JoinPoint joinPoint) throws IOException{
+		Virement v = (Virement) joinPoint.getArgs()[0];
+		try(FileWriter fw = new FileWriter("Virements.txt", true);
+			    BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw))
+			{
+			    out.println("Virement : montant :"+v.getMontant()+"€ ; date : "+v.getDateExecution()+" ; compte debiteur : "+v.getCompteDebiteur().getNumeroCompte()+" ; compte crediteur : "+v.getCompteCrediteur().getNumeroCompte());
+			} catch (IOException e) {
+			    //exception handling left as an exercise for the reader
+			}
 	}
 }

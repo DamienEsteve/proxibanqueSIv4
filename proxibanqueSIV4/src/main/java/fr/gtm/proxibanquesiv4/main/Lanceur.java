@@ -119,11 +119,6 @@ public class Lanceur {
 		vir6.setMontant(400);
 		vir6.setDateExecution(date1);
 		conseillerDao.createVirement(vir6);
-		
-		List<Virement> virements = gerantDao.selectVirementsFromDate(date2);
-		for (Virement v : virements){
-			System.out.println(">>>>>>>>>>>>>>>>>>>> virements : "+v.getMontant()+"€");
-		}
 	}
 }
 
