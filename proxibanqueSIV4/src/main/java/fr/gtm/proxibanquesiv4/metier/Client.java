@@ -39,7 +39,7 @@ public class Client extends Personne implements Serializable {
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Compte> listeCompte;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Coordonnees coordonneesClient;
 	
 	@Column(nullable=false)
@@ -51,6 +51,7 @@ public class Client extends Personne implements Serializable {
 	public Client() {
 		super();
 		setListeCompte(new ArrayList<Compte>());
+		this.coordonneesClient = new Coordonnees();
 	}
 
 	/**

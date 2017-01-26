@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../resources/theme1/template/layout.xhtml">
+
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content" id="content">
+			<h2 class="col-md-12">Modification des coordonnées d'un Client</h2>
+
+			<article class="row"> 
+			<section class="sec">
+			<div>
+
+				<h:form>
+					<fieldset id="identite0">
+						<legend> Informations Personnelles </legend>
+						ID Actuel : ${clientbean.id}
+						Nom actuel : ${clientbean.nom}
+						<br /> <label for="nom">Nom de famille : </label> 
+						<h:inputText value="${clientbean.nom }" /><br />
+						Prénom actuel : ${clientbean.prenom}
+						<br /> <label for="prenom">Prénom : </label> 
+						<h:inputText value="${clientbean.prenom }" /><br />
+					</fieldset>
+
+					<fieldset id="identite1">
+						<legend> Coordonnées Postales </legend>
+						Adresse postale actuelle :
+						${clientbean.adresse}
+						${clientbean.cp}
+						${clientbean.ville}
+						<br /> <label for="adresse">Adresse Postale : </label> <h:inputText
+							class="identite1a" type="text" name="adresse" id="adresse"
+							value="${clientbean.adresse }" /><br /> <label
+							class="identite1b" for="cpostale">Code Postal : </label> <h:inputText
+							class="identite1b" type="text" name="cpostale" id="cpostale"
+							value="${clientbean.cp }" /><br /> <label
+							class="identite1b" for="ville">Ville : </label> <h:inputText
+							class="identite1b" type="text" name="ville" id="ville"
+							value="${clientbean.ville }" /><br />
+					</fieldset>
+
+					<fieldset id="identite2">
+						<legend> Coordonnées Internet </legend>
+						Email actuel :
+						${clientbean.email}
+						<br /> <label for="Mail">Adresse email :</label> <h:inputText
+							class="identite1c" value="${clientbean.email }" /><br /> Téléphone actuel :
+						${clientbean.telephone}
+						<br /> <label for="Telephone">Téléphone :</label> <h:inputText
+							class="identite1c" value="${clientbean.telephone }" /><br />
+					</fieldset>
+
+					<p id="Bouton">
+						<h:commandButton action="#{clientbean.modifClient()}" value="Valider Modifications Client"/>
+					</p>
+
+				</h:form>
+							<br /><br /><br />
+			<h:link value="Index" outcome="index" />
+			</div>
+			</section> </article>
+		</ui:define>
+
+	</ui:composition>
+
+

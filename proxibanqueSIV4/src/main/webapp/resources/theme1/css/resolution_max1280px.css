@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+@media (max-width: 1280px) 
+{
+  .container 
+	  {
+	    width: 1200px;
+	  }
+	
+	nav
+	{
+	/* 	width: 100px;
+	 */	text-align: center;
+	 	font-size: 22px;
+	}
+	img
+	{
+		width: 500px;
+	} 
+	
+	  
+}

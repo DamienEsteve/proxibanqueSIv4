@@ -7,8 +7,14 @@
 
 <h:head>
 	<!-- permet de déclarer une ressource qui se trouve dans le dossier css du dossier parent resources -->
-	<link rel="stylesheet" href="./resources/theme1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="./resources/theme1/css/styleProxi1_index.css" />
+	<div id="css">
+		<ui:insert name="css">
+			<ui:include src="/resources/theme1/template/css.xhtml">
+			</ui:include>
+		</ui:insert>
+	</div>
+	
+<!-- 	<h:outputStylesheet library="css" name="/resources/theme1/css/styleProxi1_index.css" /> -->
 </h:head>
 <h:body>
 	<div id="page">
@@ -20,12 +26,12 @@
 			</ui:insert>
 		</div>
 
-		<!-- La div avec le id= content, Represente le contenu spécifique à chaque vue 
+		<!-- La div avec le id= content, Represente le contenu spécifique à chaque vue -->
 		<div id="content">
 			<ui:insert name="content">
 				<ui:include src="/resources/theme1/template/connexion.xhtml"/>
 			</ui:insert>
-		</div> -->
+		</div> 
 
 		<!-- La div avec le id= footer, Represente le contenu spécifique au pied de page par défaut  -->
 		<div id="footer">

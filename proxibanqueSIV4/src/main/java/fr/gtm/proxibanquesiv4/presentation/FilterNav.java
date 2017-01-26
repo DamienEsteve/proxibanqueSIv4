@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("*.xhtml")
+@WebFilter("*.xhtmjhtfhkl")
 public class FilterNav implements Filter {
 
     @Override

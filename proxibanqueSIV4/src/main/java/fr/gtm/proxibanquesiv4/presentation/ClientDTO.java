@@ -18,8 +18,9 @@ import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 public class ClientDTO implements Serializable {
 
 	private long id;
-	private int telephone;
-	private String nom, prenom, email, adresse, ville, cp;
+	private String telephone;
+	private String nom, prenom, email, adresse, ville, civilite;
+	int cp;
 	private List<Compte> listecomptes;
 
 	private static Logger logger = Logger.getLogger(ClientDTO.class);
@@ -39,11 +40,11 @@ public class ClientDTO implements Serializable {
 		this.id = id;
 	}
 
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
@@ -87,11 +88,11 @@ public class ClientDTO implements Serializable {
 		this.ville = ville;
 	}
 
-	public String getCp() {
+	public int getCp() {
 		return cp;
 	}
 
-	public void setCp(String cp) {
+	public void setCp(int cp) {
 		this.cp = cp;
 	}
 	
@@ -102,6 +103,17 @@ public class ClientDTO implements Serializable {
 	public List<Compte> setListecomptes(List<Compte> listecomptes) {
 		this.listecomptes = listecomptes;
 		return listecomptes;
+	}
+
+	
+	
+	
+	public String getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
 	}
 
 	public void creerClient(Client client) {
@@ -118,6 +130,22 @@ public class ClientDTO implements Serializable {
 	
 	public List<Compte> ListeAllComptes() {
 		return setListecomptes(serviceconseiller.selectAllComptes());
+	}
+	public String goModifCli(){
+		return "modifclient?faces-redirect=true";
+	}
+	public String modifClient(){
+		Client cl = new Client();
+		cl.setNom(this.nom);
+		cl.setPrenom(this.prenom);
+		cl.getCoordonneesClient().setAdresse(this.adresse);
+		cl.getCoordonneesClient().setCodePostal(this.cp);
+		cl.getCoordonneesClient().setEmail(this.email);
+		cl.getCoordonneesClient().setTelephone(this.telephone);
+		cl.getCoordonneesClient().setVille(this.ville);
+		cl.setCivilite(this.civilite);
+		serviceconseiller.updateClient(cl);
+		return "indexConseiller?faces-redirect=true";
 	}
 	
 }

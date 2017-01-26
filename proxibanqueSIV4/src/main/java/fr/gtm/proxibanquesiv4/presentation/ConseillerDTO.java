@@ -55,11 +55,8 @@ public class ConseillerDTO implements Serializable {
 		 * 
 		 */
 		String login=FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-		if(login.toUpperCase().equals("VADOR")){
-			this.id=1;
-		} else if(login.toUpperCase().equals("LEIA")){
-			this.id=3;
-		}
+		System.out.println(login);
+		this.id=serviceconseiller.SelectIdByLoginConseiller(login);
 		return listeclients = serviceconseiller.selectClientsByConsId(id);
 	}
 	

@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+.col-lg-2 { line-height: 100px; }
+.col-lg-5 { line-height: 200px; }
+.col-lg-12 { line-height: 80px; }

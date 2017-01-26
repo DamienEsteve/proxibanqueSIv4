@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Accueil</title>
-<!-- 	<h:outputStylesheet library="css"
-		name="src/main/webapp/css/bootstrap.min.css" />
-	<h:outputStylesheet library="css" name="src/main/webapp/css/styleProxi1_index.css" /> -->
-</h:head>
-<h:body>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="./resources/theme1/template/layout.xhtml">
+<ui:define name="css">
+	<link rel="stylesheet" href="./resources/theme1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./resources/theme1/css/styleProxi1_index.css" />
+</ui:define>
+<ui:define name="content">
+
 <!-- 	<ui:composition template="/template/connexion.xhtml">
 	</ui:composition> -->
-	
-	Bonjour <a href="conseiller/indexConseiller.xhtml"> connectez voyus mr conseiller</a>
-</h:body>
-</html>
+	<br/><br/><br/>
+	Bonjour <a href="conseiller/indexConseiller.xhtml"> connectez vous mr conseiller</a>
+	<br/><br/><br/>
+</ui:define>
+</ui:composition>

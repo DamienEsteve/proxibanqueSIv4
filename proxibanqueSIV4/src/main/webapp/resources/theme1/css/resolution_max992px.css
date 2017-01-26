@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+@media (min-width: 992px) 
+{
+  .container 
+  {
+    width: 970px;
+  }
+  	
+	nav
+	{
+	/* 	width: 100px;
+	 */	text-align: center;
+	}	
+	img
+	{
+		width: 200px;
+	}
+	
+}
