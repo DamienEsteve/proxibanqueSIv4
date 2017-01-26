@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
+import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 import fr.gtm.proxibanquesiv4.service.IServiceGerant;
@@ -23,8 +24,8 @@ public class GerantDTO {
 	private long id;
 	private List<Conseiller> listeconseillers;
 	private List<Virement> listevirements;
-	private List<Client> listeclientdec;
-	private double solde;
+	private List<Compte> listeclientdec;
+	private List<Compte> listecompte;
 
 	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(GerantDTO.class);
@@ -64,12 +65,13 @@ public class GerantDTO {
 		return listevirements = servicegerant.selectVirementsFromDate(date);
 	}
 
-	public List<Client> ListeClientDecouvert() {
+	public List<Compte> ListeClientDecouvert() {
 		return listeclientdec = servicegerant.selectClientDecouvert();
 	}
 
-	public double SoldeClientDecouvert(long idPersonne) {
-		return solde;
+	public List<Compte> SoldeClientDecouvert(long idPersonne) {
+		System.out.println(">>> id personne : " + idPersonne);
+		return listecompte = servicegerant.selectSoldeByClientDecouvert(idPersonne);
 	}
 
 }

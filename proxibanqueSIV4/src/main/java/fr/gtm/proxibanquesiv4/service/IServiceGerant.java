@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
+import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
@@ -14,8 +15,8 @@ public interface IServiceGerant {
 
 	public long SelectIdByLoginGerant(String l);
 
-	public List<Client> selectClientDecouvert();
+	public List<Compte> selectClientDecouvert();
 
-	public double selectSoldeByClientDecouvert(long idPersonne);
+	public List<Compte> selectSoldeByClientDecouvert(long idPersonne);
 
 }

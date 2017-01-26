@@ -4,18 +4,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>proxibanqueSI</title>
-	</h:head>
-	<h:body>
-	<h3>Rappport des transactions des clients sur les trois derniers mois</h3>
-	<p:chart type="pie" model="#{primeFacesPie.pieModel}"
-		style="width:400px;height:300px" />
-	<br />
-	<p:chart type="bar" model="#{primeFacesBar.barModel}"
-		style="height:300px" />
+	xmlns:p="http://primefaces.org/ui"
+	template="../resources/theme1/template/layout.xhtml">
+	<ui:define name="content">
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<title>proxibanqueSI</title>
+		</h:head>
+		<h:body>
+			<h3>Rappport des transactions des clients sur les trois derniers
+				mois</h3>
+			<p:chart type="pie" model="#{primeFacesPie.pieModel}"
+				style="width:400px;height:300px" />
+			<br />
+			<p:chart type="bar" model="#{primeFacesBar.barModel}"
+				style="height:300px" />
 		</h:body>
-
+	</ui:define>
 </ui:composition>

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.gtm.proxibanquesiv4.dao.IGerantDao;
 import fr.gtm.proxibanquesiv4.metier.Client;
+import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
@@ -35,12 +36,12 @@ public class ServiceGerant implements IServiceGerant {
 	}
 
 	@Override
-	public List<Client> selectClientDecouvert() {
+	public List<Compte> selectClientDecouvert() {
 		return daog.selectClientDecouvert();
 	}
 
 	@Override
-	public double selectSoldeByClientDecouvert(long idPersonne) {
+	public List<Compte> selectSoldeByClientDecouvert(long idPersonne) {
 		return daog.selectSoldeByClientDecouvert(idPersonne);
 	}
 }

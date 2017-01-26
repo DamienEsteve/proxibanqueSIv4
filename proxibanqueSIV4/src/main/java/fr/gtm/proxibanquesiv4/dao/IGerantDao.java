@@ -15,7 +15,7 @@ public interface IGerantDao {
 
 	public long SelectIdByLoginGerant(String l);
 
-	public List<Client> selectClientDecouvert();
+	public List<Compte> selectClientDecouvert();
 
-	public double selectSoldeByClientDecouvert(long idPersonne);
+	public List<Compte> selectSoldeByClientDecouvert(long idPersonne);
 }
