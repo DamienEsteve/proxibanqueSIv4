@@ -1,22 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<body>
-	<h3>Accueil Directeur d'Agence</h3>
-	<h4>Liste des Conseillers de l'Agence</h4>
-	<c:forEach items="#{.listeAllConseiller()}" var="cons">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="../resources/theme1/template/layout.xhtml">
+	<ui:define name="content">
+
+		<h3>Accueil Directeur d'Agence</h3>
+		<h4>Liste des Conseillers de l'Agence</h4>
 		<h:form>
+			<h:dataTable class="table"
+				value="#{gerantbean.ListeAllConseillers()}" var="ger">
+				<h:column>
+					<f:facet name="header"> Id Conseiller </f:facet>
+	    				#{ger.idPersonne}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Civilité </f:facet>
+	    				#{ger.civilite}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Nom </f:facet>
+	    				#{ger.nom}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Prénom </f:facet>
+	    				#{ger.prenom}
+	    			</h:column>
 
+			</h:dataTable>
 		</h:form>
-	</c:forEach>
 
+		<br />
 
-</body>
-</html>
+		<h:form>
+			<h4>Liste des Clients de la banque qui sont à découvert :</h4>
 
-
+			<h:dataTable class="table"
+				value="#{gerantbean.ListeClientDecouvert()}" var="dec">
+				<h:column>
+					<f:facet name="header"> Id Conseiller </f:facet>
+	    				#{dec.client.idPersonne}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Civilité </f:facet>
+	    				#{dec.client.civilite}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Nom </f:facet>
+	    				#{dec.client.nom}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Prénom </f:facet>
+	    				#{dec.client.prenom}
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Solde </f:facet>
+<!-- 					<h:outputText
+						value="#{gerantbean.SoldeClientDecouvert(dec.client.idPersonne)}" /> -->
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<br />
+		<br />
+	Consulter l'historique des transactions des clients de la banque <a
+			href="gerant_graphiques.xhtml"> Consulter </a>
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
