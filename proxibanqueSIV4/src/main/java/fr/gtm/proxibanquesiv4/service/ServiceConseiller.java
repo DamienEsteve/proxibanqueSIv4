@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.gtm.proxibanquesiv4.dao.IConseillerDao;
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
+import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
 @Service
@@ -34,6 +35,11 @@ public class ServiceConseiller implements IServiceConseiller {
 	}
 
 	@Override
+	public Conseiller selectConseillerByLogin(String l){
+		return daoc.selectConseillerByLogin(l);
+	}
+	
+	@Override
 	public List<Compte> selectComptesByClientId(long idClient) {
 		return daoc.selectComptesByClientId(idClient);
 	}
@@ -55,7 +61,7 @@ public class ServiceConseiller implements IServiceConseiller {
 
 	@Override
 	public void createVirement(Virement vir) {
-		daoc.createVirement(vir);
+		daoc.createVirementDao(vir);
 	}
 
 	@Override

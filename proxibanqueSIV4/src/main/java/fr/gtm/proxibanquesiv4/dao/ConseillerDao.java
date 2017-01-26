@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
+import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
 @Repository("conseillerDao")
@@ -41,6 +42,13 @@ public class ConseillerDao implements IConseillerDao {
 	}
 
 	@Override
+	public Conseiller selectConseillerByLogin(String l) {
+		Query query = getSession().createQuery("Select c from Conseiller c where c.login =:l");
+		query.setParameter("l", l);
+		return (Conseiller) query.getSingleResult();
+	}
+
+	@Override
 	public List<Compte> selectComptesByClientId(long idClient) {
 		Query query = getSession().createQuery("Select cpt from Compte cpt where cpt.client.idPersonne =:idClient");
 		query.setParameter("idClient", idClient);
@@ -67,11 +75,11 @@ public class ConseillerDao implements IConseillerDao {
 	}
 
 	@Override
-	public void createVirement(Virement vir) {
+	public void createVirementDao(Virement vir) {
 		Compte cc = vir.getCompteCrediteur();
 		Compte cd = vir.getCompteDebiteur();
-		cc.setSolde(cc.getSolde()-vir.getMontant());
-		cd.setSolde(cd.getSolde()+vir.getMontant());
+		cc.setSolde(cc.getSolde()+vir.getMontant());
+		cd.setSolde(cd.getSolde()-vir.getMontant());
 		updateCompte(cc);
 		updateCompte(cd);
 		getSession().save(vir);
