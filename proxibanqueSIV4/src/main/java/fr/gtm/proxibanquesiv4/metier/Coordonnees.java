@@ -36,7 +36,7 @@ public class Coordonnees implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCoordonnees;
+	private long idCoordonnees;
 	/**
 	 * L'adresse de la personne. Cette adresse est entree et est modifiable par
 	 * le conseiller.
@@ -145,7 +145,7 @@ public class Coordonnees implements Serializable {
 	/**
 	 * @return the idC
 	 */
-	public int getIdCoordonnees() {
+	public long getIdCoordonnees() {
 		return idCoordonnees;
 	}
 
@@ -153,15 +153,12 @@ public class Coordonnees implements Serializable {
 	 * @param idC
 	 *            the idC to set
 	 */
-	public void setIdCoordonnees(int idC) {
+	public void setIdCoordonnees(long idC) {
 		this.idCoordonnees = idC;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -169,24 +166,20 @@ public class Coordonnees implements Serializable {
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
 		result = prime * result + codePostal;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + idCoordonnees;
+		result = prime * result + (int) (idCoordonnees ^ (idCoordonnees >>> 32));
+		result = prime * result + ((listeClient == null) ? 0 : listeClient.hashCode());
 		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
 		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Coordonnees))
+		if (getClass() != obj.getClass())
 			return false;
 		Coordonnees other = (Coordonnees) obj;
 		if (adresse == null) {
@@ -202,6 +195,11 @@ public class Coordonnees implements Serializable {
 		} else if (!email.equals(other.email))
 			return false;
 		if (idCoordonnees != other.idCoordonnees)
+			return false;
+		if (listeClient == null) {
+			if (other.listeClient != null)
+				return false;
+		} else if (!listeClient.equals(other.listeClient))
 			return false;
 		if (telephone == null) {
 			if (other.telephone != null)
