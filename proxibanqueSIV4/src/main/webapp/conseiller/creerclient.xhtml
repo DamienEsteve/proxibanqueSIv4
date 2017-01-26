@@ -10,7 +10,7 @@
 
 		<!-- Redefinition de la zone 'content' du layout  	-->
 		<ui:define name="content" id="content">
-			<h2 class="col-md-12">Modification des coordonnées d'un Client</h2>
+			<h2 class="col-md-12">Creation des coordonnées d'un Client</h2>
 
 			<article class="row"> 
 			<section class="sec">
@@ -19,23 +19,16 @@
 				<h:form>
 					<fieldset id="identite0">
 						<legend> Informations Personnelles </legend>
-						ID Actuel : ${clientbean.id}
-						Civilité actuelle : ${clientbean.civilite}
 						<br /> <label for="civilite">Civilité : </label>
-						Nom actuel : ${clientbean.nom}
+						<h:inputText value="${clientbean.civilite }" />
 						<br /> <label for="nom">Nom de famille : </label> 
-						<h:inputText value="${clientbean.nom }" /><br />
-						Prénom actuel : ${clientbean.prenom}
+						<h:inputText value="${clientbean.nom }" />
 						<br /> <label for="prenom">Prénom : </label> 
 						<h:inputText value="${clientbean.prenom }" /><br />
 					</fieldset>
 
 					<fieldset id="identite1">
 						<legend> Coordonnées Postales </legend>
-						Adresse postale actuelle :
-						${clientbean.adresse}
-						${clientbean.cp}
-						${clientbean.ville}
 						<br /> <label for="adresse">Adresse Postale : </label> <h:inputText
 							class="identite1a" type="text" name="adresse" id="adresse"
 							value="${clientbean.adresse }" /><br /> <label
@@ -49,17 +42,14 @@
 
 					<fieldset id="identite2">
 						<legend> Coordonnées Internet </legend>
-						Email actuel :
-						${clientbean.email}
 						<br /> <label for="Mail">Adresse email :</label> <h:inputText
-							class="identite1c" value="${clientbean.email }" /><br /> Téléphone actuel :
-						${clientbean.telephone}
+							class="identite1c" value="${clientbean.email }" />
 						<br /> <label for="Telephone">Téléphone :</label> <h:inputText
 							class="identite1c" value="${clientbean.telephone }" /><br />
 					</fieldset>
 
 					<p id="Bouton">
-						<h:commandButton action="#{clientbean.modifClient()}" value="Valider Modifications Client"/>
+						<h:commandButton action="#{clientbean.creerClient()}" value="Valider la creation Client"/>
 					</p>
 
 				</h:form>

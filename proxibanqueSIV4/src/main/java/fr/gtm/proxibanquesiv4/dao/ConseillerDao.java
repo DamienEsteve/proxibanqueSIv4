@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
+import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
 @Repository("conseillerDao")
@@ -38,6 +39,13 @@ public class ConseillerDao implements IConseillerDao {
 	@Override
 	public void updateCompte(Compte cpt) {
 		getSession().update(cpt);
+	}
+
+	@Override
+	public Conseiller selectConseillerByLogin(String l) {
+		Query query = getSession().createQuery("Select c from Conseiller c where c.login =:l");
+		query.setParameter("l", l);
+		return (Conseiller) query.getSingleResult();
 	}
 
 	@Override

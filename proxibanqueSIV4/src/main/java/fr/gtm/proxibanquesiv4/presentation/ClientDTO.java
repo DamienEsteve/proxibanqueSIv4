@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
+import fr.gtm.proxibanquesiv4.metier.Coordonnees;
 import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
 @Controller("clientbean")
@@ -145,6 +147,9 @@ public class ClientDTO implements Serializable {
 	public List<Compte> ListeAllComptes() {
 		return setListecomptes(serviceconseiller.selectAllComptes());
 	}
+	public String goCreerCli(){
+		return "creerclient?faces-redirect=true";
+	}
 	public String goModifCli(){
 		return "modifclient?faces-redirect=true";
 	}
@@ -165,6 +170,20 @@ public class ClientDTO implements Serializable {
 		cl.setCivilite(this.civilite);
 		cl.setConseiller(this.conseiller);
 		serviceconseiller.updateClient(cl);
+		return "indexConseiller?faces-redirect=true";
+	}
+	
+	public String creerClient(){
+		Client cl = new Client();
+		cl.setNom(this.nom);
+		cl.setPrenom(this.prenom);
+		Coordonnees coord = new Coordonnees(adresse, cp, ville, telephone, email);
+		cl.setCoordonneesClient(coord);
+		cl.setCivilite(this.civilite);
+		String login=FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+		Conseiller cons = serviceconseiller.selectConseillerByLogin(login);
+		cl.setConseiller(cons);
+		serviceconseiller.createClient(cl);
 		return "indexConseiller?faces-redirect=true";
 	}
 	
