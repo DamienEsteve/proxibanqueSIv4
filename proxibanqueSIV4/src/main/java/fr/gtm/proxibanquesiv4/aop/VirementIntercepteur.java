@@ -1,6 +1,7 @@
 package fr.gtm.proxibanquesiv4.aop;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +21,11 @@ public class VirementIntercepteur {
 	public void logBefore(JoinPoint joinPoint) throws IOException{
 		Virement v = (Virement) joinPoint.getArgs()[0];
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<INTERCEPTEURVIREMENT");
+		String path = System.getProperty("user.home")+"\\Documents\\Virements.txt";
+		System.out.println(path);
 		try(
-				FileWriter fw = new FileWriter("C:/Users/Adminl/Desktop/Virements.txt", true);
+				
+				FileWriter fw = new FileWriter(path, true);
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw)
 			    		)

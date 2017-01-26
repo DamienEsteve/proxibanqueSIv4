@@ -75,11 +75,11 @@ public class ConseillerDao implements IConseillerDao {
 	}
 
 	@Override
-	public void createVirement(Virement vir) {
+	public void createVirementDao(Virement vir) {
 		Compte cc = vir.getCompteCrediteur();
 		Compte cd = vir.getCompteDebiteur();
-		cc.setSolde(cc.getSolde()-vir.getMontant());
-		cd.setSolde(cd.getSolde()+vir.getMontant());
+		cc.setSolde(cc.getSolde()+vir.getMontant());
+		cd.setSolde(cd.getSolde()-vir.getMontant());
 		updateCompte(cc);
 		updateCompte(cd);
 		getSession().save(vir);

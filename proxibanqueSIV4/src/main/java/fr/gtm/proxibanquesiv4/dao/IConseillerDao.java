@@ -16,7 +16,7 @@ public interface IConseillerDao {
 	public List<Client> selectClientsByConsId(long idCons);
 	public List<Compte> selectAllComptes();
 	public List<Client> selectAllClients();
-	public void createVirement(Virement vir);
+	public void createVirementDao(Virement vir);
 	public void createCompte(Compte c);
 	public Compte selectCompteById(long idCpt);
 	public long SelectIdByLoginConseiller(String l);

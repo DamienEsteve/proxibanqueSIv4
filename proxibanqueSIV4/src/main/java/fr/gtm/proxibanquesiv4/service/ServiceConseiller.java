@@ -61,7 +61,7 @@ public class ServiceConseiller implements IServiceConseiller {
 
 	@Override
 	public void createVirement(Virement vir) {
-		daoc.createVirement(vir);
+		daoc.createVirementDao(vir);
 	}
 
 	@Override
