@@ -1,7 +1,10 @@
 package fr.gtm.proxibanquesiv4.presentation;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import java.util.Date;
+
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +15,18 @@ import fr.gtm.proxibanquesiv4.metier.Virement;
 import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
 @Controller("virementbean")
-@SessionScoped
+@RequestScoped
 public class VirementDTO implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5143271333244126997L;
 	private Compte compteCrediteur;
 	private Compte compteDebiteur;
+	private long numCompteCrediteur, numCompteDebiteur;
 	private double montant;
+	private Date dateExecution;
 	
 	private static Logger logger = Logger.getLogger(VirementDTO.class);
 
@@ -33,6 +42,7 @@ public class VirementDTO implements Serializable {
 	public void setCompteCrediteur(Compte compteCrediteur) {
 		this.compteCrediteur = compteCrediteur;
 	}
+	
 	public Compte getCompteDebiteur() {
 		return compteDebiteur;
 	}
@@ -46,7 +56,49 @@ public class VirementDTO implements Serializable {
 		this.montant = montant;
 	}
 	
-	public void Virement(Virement virement) {
+	public Date getDateExecution() {
+		return dateExecution;
+	}
+	
+	public void setDateExecution(Date dateExecution) {
+		this.dateExecution = dateExecution;
+	}
+	
+	public long getNumCompteCrediteur() {
+		return numCompteCrediteur;
+	}
+	public void setNumCompteCrediteur(long numCompteCrediteur) {
+		this.numCompteCrediteur = numCompteCrediteur;
+	}
+	/**
+	 * @return the numCompteDebiteur
+	 */
+	public long getNumCompteDebiteur() {
+		return numCompteDebiteur;
+	}
+	/**
+	 * @param numCompteDebiteur the numCompteDebiteur to set
+	 */
+	public void setNumCompteDebiteur(long numCompteDebiteur) {
+		this.numCompteDebiteur = numCompteDebiteur;
+	}
+	public String virer() {
+		this.compteCrediteur = servicetransaction.selectCompteById(numCompteCrediteur);
+		this.compteDebiteur = servicetransaction.selectCompteById(numCompteDebiteur);
+		System.out.println(this.montant);
+		System.out.println("##############################################");
+		this.dateExecution = new Date();
+		Virement virement = new Virement();
+		virement.setCompteCrediteur(this.compteCrediteur);
+		virement.setCompteDebiteur(this.compteDebiteur);
+		virement.setMontant(this.montant);
+		virement.setDateExecution(this.dateExecution);
+		System.out.println("tototototo");
+		System.out.println(virement.getMontant());
+		System.out.println(virement.getCompteCrediteur());
+		System.out.println(virement.getCompteDebiteur());
+		System.out.println(virement.getDateExecution());
 		servicetransaction.createVirement(virement);
+		return "indexConseiller?faces-redirect=true";
 	}
 }

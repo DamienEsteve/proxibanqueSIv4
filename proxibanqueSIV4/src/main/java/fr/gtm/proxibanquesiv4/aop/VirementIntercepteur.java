@@ -19,13 +19,18 @@ public class VirementIntercepteur {
 	@Before("execution(* *.createVirement(..))")
 	public void logBefore(JoinPoint joinPoint) throws IOException{
 		Virement v = (Virement) joinPoint.getArgs()[0];
-		try(FileWriter fw = new FileWriter("Virements.txt", true);
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<INTERCEPTEURVIREMENT");
+		try(
+				FileWriter fw = new FileWriter("C:/Users/Adminl/Desktop/Virements.txt", true);
 			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw))
+			    PrintWriter out = new PrintWriter(bw)
+			    		)
 			{
+				System.out.println(">>>>>>>>>>>>>>>>>>>>>>> On écrit dans le fichier : "+fw+" ce qui suit : "+"Virement : montant :"+v.getMontant()+"€ ; date : "+v.getDateExecution()+" ; compte debiteur : "+v.getCompteDebiteur().getNumeroCompte()+" ; compte crediteur : "+v.getCompteCrediteur().getNumeroCompte());
 			    out.println("Virement : montant :"+v.getMontant()+"€ ; date : "+v.getDateExecution()+" ; compte debiteur : "+v.getCompteDebiteur().getNumeroCompte()+" ; compte crediteur : "+v.getCompteCrediteur().getNumeroCompte());
 			} catch (IOException e) {
-			    //exception handling left as an exercise for the reader
+			   System.out.println(e.getMessage());
+			   System.out.println("<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<");
 			}
 	}
 }

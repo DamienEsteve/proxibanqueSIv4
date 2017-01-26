@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
 
 	<!-- Redefinition de la zone 'content' du layout  	-->
@@ -51,20 +52,23 @@
 				</h:column>
 				<h:column>
 					<span class="listcol"></span>
-					<f:facet id="headercol" name="header">Virement</f:facet>
-					<h:form>
-						<h:commandButton action="#{virement.vireC1}"
-							value="Effectuer Virement à partir de ce compte">
-							<f:setPropertyActionListener value="#{com}"
-								target="#{virement.c1}"></f:setPropertyActionListener>
-						</h:commandButton>
-					</h:form>
+					<f:facet id="headercol" name="header">Virer</f:facet>
+					
 				</h:column>
 
 			</h:dataTable>
+			
+			
 			<br />
 			<br />
 			<br />
+			<h:form>
+				<label>Numero compte débiteur :</label> <br /> <p:inputText id="vcc" type="text" value="#{virementbean.numCompteCrediteur}" required="true"></p:inputText> <br />
+				<label>Numéro compte créditeur :</label> <br /> <p:inputText id="vcd" type="text" value="#{virementbean.numCompteDebiteur}" required="true"></p:inputText> <br />
+				<label>Montant</label> <br /> <p:inputText  id="vmt" type="text" value="#{virementbean.montant}" required="true"></p:inputText> <br />
+				<p:commandButton type="submit"   action="#{virementbean.virer()}" value="Effectuer un virement" process="@form"></p:commandButton><br/>
+			</h:form>
+			
 			<h:link value="Index" outcome="index" />
 
 		</div>
