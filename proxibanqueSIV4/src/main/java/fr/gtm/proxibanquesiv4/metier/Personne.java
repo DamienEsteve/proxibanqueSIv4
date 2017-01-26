@@ -138,7 +138,7 @@ public abstract class Personne implements Serializable {
 	 * @param idPersonne
 	 *            the idPersonne to set
 	 */
-	public void setIdPersonne(int idPersonne) {
+	public void setIdPersonne(long idPersonne) {
 		this.idPersonne = idPersonne;
 	}
 
@@ -154,10 +154,7 @@ public abstract class Personne implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((civilite == null) ? 0 : civilite.hashCode());
 		result = prime * result + (int) (idPersonne ^ (idPersonne >>> 32));
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
 	}
 
@@ -170,23 +167,10 @@ public abstract class Personne implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Personne other = (Personne) obj;
-		if (civilite == null) {
-			if (other.civilite != null)
-				return false;
-		} else if (!civilite.equals(other.civilite))
-			return false;
 		if (idPersonne != other.idPersonne)
-			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		if (prenom == null) {
-			if (other.prenom != null)
-				return false;
-		} else if (!prenom.equals(other.prenom))
 			return false;
 		return true;
 	}
+
+	
 }

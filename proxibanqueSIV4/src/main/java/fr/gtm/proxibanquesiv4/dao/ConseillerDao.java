@@ -31,6 +31,7 @@ public class ConseillerDao implements IConseillerDao {
 
 	@Override
 	public void updateClient(Client cl) {
+		System.out.println(cl);
 		getSession().update(cl);
 	}
 

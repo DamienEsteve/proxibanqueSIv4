@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
 <ui:define name="content">
 	<h3>Accueil Conseiller</h3>
@@ -31,14 +32,14 @@
 	    			</h:column>
 
 			<h:column>
-				<f:facet name="header"> Nom </f:facet>
+				<f:facet name="header"> EstSociete </f:facet>
 	    				#{c.estSociete}
 	    	</h:column>
 	    	<h:column>
 					<span class="listcol"></span>
 					<f:facet id="headercol" name="header">Action</f:facet>
 					<h:form>
-					<h:commandButton action="#{clientbean.goModifCli}" value="Modifier Informations Client">
+					<p:commandButton action="#{clientbean.goModifCli}" value="Modifier Informations Client" process="@form">
 						<f:setPropertyActionListener value="#{c.idPersonne}" target="#{clientbean.id}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.nom}" target="#{clientbean.nom}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.prenom}" target="#{clientbean.prenom}"></f:setPropertyActionListener>
@@ -47,12 +48,14 @@
 						<f:setPropertyActionListener value="#{c.coordonneesClient.ville}" target="#{clientbean.ville}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.coordonneesClient.codePostal}" target="#{clientbean.cp}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.coordonneesClient.telephone}" target="#{clientbean.telephone}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener value="#{c.coordonneesClient.idCoordonnees}" target="#{clientbean.idC}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.civilite}" target="#{clientbean.civilite}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener value="#{c.conseiller}" target="#{clientbean.conseiller}"></f:setPropertyActionListener>
 <!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-					</h:commandButton>
+					</p:commandButton>
 					</h:form>
 					<h:form>
-					<h:commandButton action="#{cclientbeanit.goCompteCli}" value="Afficher Comptes Client">
+					<p:commandButton action="#{clientbean.goCompteCli}" value="Afficher Comptes Client" process="@form">
 						<f:setPropertyActionListener value="#{c.idPersonne}" target="#{clientbean.id}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.nom}" target="#{clientbean.nom}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.prenom}" target="#{clientbean.prenom}"></f:setPropertyActionListener>
@@ -62,8 +65,10 @@
 						<f:setPropertyActionListener value="#{c.coordonneesClient.codePostal}" target="#{clientbean.cp}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.coordonneesClient.telephone}" target="#{clientbean.telephone}"></f:setPropertyActionListener>
 						<f:setPropertyActionListener value="#{c.civilite}" target="#{clientbean.civilite}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener value="#{c.conseiller}" target="#{clientbean.conseiller}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener value="#{c.coordonneesClient.idCoordonnees}" target="#{clientbean.idC}"></f:setPropertyActionListener>
 <!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-					</h:commandButton>
+					</p:commandButton>
 					</h:form>
 				</h:column>
 		</h:dataTable>

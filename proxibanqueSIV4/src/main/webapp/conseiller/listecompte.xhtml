@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../resources/theme1/template/layout.xhtml">
+
+	<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="content" id="content">
+		<h2>Liste des Comptes</h2>
+		<article class="row"> <section>
+
+		<div class="col-md-6">
+			<h:dataTable class="datatable" var="com"
+				value="#{clientbean.ListeComptesParClient()}" rowClasses="datarow"
+				columnClasses="datacol, datacol" headerClass="dataheader">
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Type Compte</f:facet>
+					#{com['class'].simpleName}
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Numero Compte</f:facet>
+					${com.numeroCompte}
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Solde</f:facet>
+					${com.solde}
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">date ouverture</f:facet>
+					${com.dateOuverture}
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Autorisation decouvert</f:facet>
+					<h:outputText
+						rendered="#{com.class.name eq 'fr.gtm.proxibanquesiv4.metier.CompteCourant'}"
+						value="${com.authDecouvert}" />
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Taux remunération</f:facet>
+					<h:outputText
+						rendered="#{com.class.name eq 'fr.gtm.proxibanquesiv4.metier.CompteEpargne'}"
+						value="${com.tauxRemuneration}" />
+				</h:column>
+				<h:column>
+					<span class="listcol"></span>
+					<f:facet id="headercol" name="header">Virement</f:facet>
+					<h:form>
+						<h:commandButton action="#{virement.vireC1}"
+							value="Effectuer Virement à partir de ce compte">
+							<f:setPropertyActionListener value="#{com}"
+								target="#{virement.c1}"></f:setPropertyActionListener>
+						</h:commandButton>
+					</h:form>
+				</h:column>
+
+			</h:dataTable>
+			<br />
+			<br />
+			<br />
+			<h:link value="Index" outcome="index" />
+
+		</div>
+
+		<div class="col-md-6"></div>
+
+
+		</section> </article>
+
+
+
+
+	</ui:define>
+
+</ui:composition>
+
