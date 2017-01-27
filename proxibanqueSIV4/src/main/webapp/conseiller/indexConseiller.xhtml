@@ -76,6 +76,11 @@
 			<p:commandButton action="#{clientbean.goCreerCli}" value="Creation d'un Client" process="@form"/>
 		</h:form>
 	</h:form>
+	
+	<br/><br/><br/>
+	<h:form>
+		<p:commandButton action="#{conseillerbean.deconnexion()}" value="Deconnexion" process="@form"></p:commandButton>
+	</h:form>
 </ui:define>
 </ui:composition>
 
