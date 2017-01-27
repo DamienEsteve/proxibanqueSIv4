@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
@@ -27,12 +26,14 @@ public class GerantDao implements IGerantDao {
 		return sessionFactory.getCurrentSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Conseiller> selectAllConseillers() {
 		Query query = getSession().createQuery("Select c from Conseiller c");
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Virement> selectVirementsFromDate(Date d) {
 		Query query = getSession().createQuery("Select vir from Virement vir where vir.dateExecution <:d");
@@ -47,9 +48,10 @@ public class GerantDao implements IGerantDao {
 		return (long) query.getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Compte> selectClientDecouvert() {
-		Query query = getSession().createQuery("Select co from Compte co where co.solde < 0");	
+		Query query = getSession().createQuery("Select co from Compte co where co.solde < 0");
 		return query.getResultList();
 	}
 }

@@ -7,6 +7,12 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 @Component

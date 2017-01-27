@@ -21,8 +21,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * @author guillaume Jamin, Severine Romano
- * @version 3.0
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
  */
 @SuppressWarnings("serial")
 @Entity

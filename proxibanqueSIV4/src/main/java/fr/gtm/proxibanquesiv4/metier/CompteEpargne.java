@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
  * ComtpeEpargne est la classe repr�sentant un compte epargne. Elle h�rite de la
  * sur-classe Compte.
  * 
- * @author Guillaume Jamin, K�vin Buewaert.
- * @version 1.0
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
  *
  */
 @SuppressWarnings("serial")

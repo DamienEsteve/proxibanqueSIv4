@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
  * ComtpeCourant est la classe repr�sentant un compte courant. Elle h�rite de la
  * sur-classe Compte.
  * 
- * @author Guillaume Jamin,Séverine Romano
- * @version 3.0
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
  *
  */
 @SuppressWarnings("serial")

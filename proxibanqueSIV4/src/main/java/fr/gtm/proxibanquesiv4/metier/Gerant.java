@@ -12,6 +12,12 @@ import javax.persistence.Transient;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
 @Entity
 @Component
 public class Gerant extends Utilisateur implements Serializable{

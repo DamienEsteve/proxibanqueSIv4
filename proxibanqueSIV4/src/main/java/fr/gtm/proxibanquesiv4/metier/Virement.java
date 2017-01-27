@@ -12,28 +12,34 @@ import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
 @Entity
 @Component
 public class Virement {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idVirement;
-	
+
 	@OneToOne
-	@JoinColumn(name="cpt_debit")
+	@JoinColumn(name = "cpt_debit")
 	private Compte compteDebiteur;
-	
+
 	@OneToOne
-	@JoinColumn(name="cpt_credit")
+	@JoinColumn(name = "cpt_credit")
 	private Compte compteCrediteur;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private Date dateExecution;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private double montant;
-	
+
 	public Virement() {
 		// TODO Auto-generated constructor stub
 	}
@@ -125,8 +131,5 @@ public class Virement {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }

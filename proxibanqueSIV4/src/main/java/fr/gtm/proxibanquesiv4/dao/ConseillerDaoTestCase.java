@@ -16,13 +16,15 @@ public class ConseillerDaoTestCase {
 
 	private static Logger logger = Logger.getLogger(ConseillerDaoTestCase.class);
 	private static ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/application-config.xml");
-//	private static IConseillerDao conseillerDao;
+	// private static IConseillerDao conseillerDao;
 	private static long id = 0;
+	@SuppressWarnings("unused")
 	private static String password = "test";
+	@SuppressWarnings("unused")
 	private static String login = "test";
 	private static String nom = "Esteve";
 	private static String prenom = "Damien";
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -35,8 +37,8 @@ public class ConseillerDaoTestCase {
 	public void test1Creer() {
 		IConseillerDao conseillerDao = (ConseillerDao) appContext.getBean("conseillerDao", ConseillerDao.class);
 		Client client = new Client();
-//		client.setPassword(password);
-//		client.setLogin(login);
+		// client.setPassword(password);
+		// client.setLogin(login);
 		client.setNom(nom);
 		client.setPrenom(prenom);
 		logger.info(">>>>>>>>>>>> creation du client");
@@ -46,5 +48,5 @@ public class ConseillerDaoTestCase {
 		assertNotNull(id);
 		assertNotEquals(null, id);
 	}
-	
+
 }

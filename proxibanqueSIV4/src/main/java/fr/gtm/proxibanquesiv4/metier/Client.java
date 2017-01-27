@@ -3,7 +3,6 @@
  */
 package fr.gtm.proxibanquesiv4.metier;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +19,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * Client est la classe repr�sentant un client de la banque.
+ * Client est la classe representant un client de la banque.
  * 
- * @author Guillaume Jamin, Séverine Romano
- * @version 3.0
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
  *
  */
 @Entity
@@ -38,11 +37,11 @@ public class Client extends Personne implements Serializable {
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Compte> listeCompte;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Coordonnees coordonneesClient;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private boolean estSociete;
 
 	/**
@@ -64,7 +63,8 @@ public class Client extends Personne implements Serializable {
 	 * @param conseiller
 	 * @param listeCompte
 	 */
-	public Client(String nom, String prenom, int idPersonne, Coordonnees coordonnees, Conseiller conseiller, List<Compte> listeCompte) {
+	public Client(String nom, String prenom, int idPersonne, Coordonnees coordonnees, Conseiller conseiller,
+			List<Compte> listeCompte) {
 		super(nom, prenom, idPersonne, coordonnees);
 		this.conseiller = conseiller;
 		setListeCompte(listeCompte);
@@ -90,7 +90,7 @@ public class Client extends Personne implements Serializable {
 	 *            the listeCompte to set
 	 */
 	public void setListeCompte(List<Compte> listeCompte) {
-		for(Compte c : listeCompte)
+		for (Compte c : listeCompte)
 			c.setClient(this);
 		this.listeCompte = listeCompte;
 	}
@@ -98,25 +98,25 @@ public class Client extends Personne implements Serializable {
 	public Coordonnees getCoordonneesClient() {
 		return coordonneesClient;
 	}
+
 	public void setCoordonneesClient(Coordonnees coordonneesClient) {
 		this.coordonneesClient = coordonneesClient;
 	}
+
 	public boolean isEstSociete() {
 		return estSociete;
 	}
+
 	public void setEstSociete(boolean estSociete) {
 		this.estSociete = estSociete;
 	}
 
-
 	public String toString() {
 		return "Client [nom=" + super.getNom() + ", prenom=" + super.getPrenom() + ", adresse="
-				+ getCoordonneesClient().getAdresse() + ", codePostal=" + getCoordonneesClient().getCodePostal() + ", ville="
-				+ getCoordonneesClient().getVille() + ", telephone=" + getCoordonneesClient().getTelephone() + ", email="
-				+ getCoordonneesClient().getEmail() + "idco : "+getCoordonneesClient().getIdCoordonnees()+"]";
+				+ getCoordonneesClient().getAdresse() + ", codePostal=" + getCoordonneesClient().getCodePostal()
+				+ ", ville=" + getCoordonneesClient().getVille() + ", telephone="
+				+ getCoordonneesClient().getTelephone() + ", email=" + getCoordonneesClient().getEmail() + "idco : "
+				+ getCoordonneesClient().getIdCoordonnees() + "]";
 	}
-
-	
-
 
 }
