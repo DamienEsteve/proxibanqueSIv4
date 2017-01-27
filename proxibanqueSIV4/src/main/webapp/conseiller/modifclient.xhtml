@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
 
 	<ui:define name="header">
@@ -31,8 +32,7 @@
 
 			<h:form>
 				<fieldset>
-					<legend> Informations Personnelles </legend>
-					ID Actuel : ${clientbean.id} <br /> Civilité actuelle :
+					<legend> Informations Personnelles </legend> Civilité actuelle :
 					${clientbean.civilite} <br /> Nom actuel : ${clientbean.nom} <br />
 					<label for="nom">Nom de famille : </label>
 					<h:inputText value="${clientbean.nom}" id="nom" label="nom"
@@ -48,7 +48,7 @@
 						<f:validateLength minimum="2" maximum="30" />
 					</h:inputText>
 					<h:message for="prenom" styleClass="error" style="color:red" />
-					<br />
+					<br /><br />
 				</fieldset>
 
 				<fieldset>
@@ -78,7 +78,7 @@
 						<f:validateLength minimum="2" maximum="30" />
 					</h:inputText>
 					<h:message for="ville" styleClass="error" style="color:red" />
-					<br />
+					<br /><br />
 				</fieldset>
 
 				<fieldset>
@@ -99,17 +99,16 @@
 						<f:validateLength minimum="10" maximum="12" />
 					</h:inputText>
 					<h:message for="telephone" styleClass="error" style="color:red" />
-					<br />
+					<br /><br />
 				</fieldset>
 
-				<p id="Bouton">
-					<h:commandButton action="#{clientbean.modifClient()}"
+
+					<h:commandButton class="combutton" action="#{clientbean.modifClient()}"
 						value="Valider Modifications Client" />
-				</p>
+
 
 			</h:form>
-			<br /> <br /> <br /> <a href="indexConseiller.xhtml"> Retour à
-				l'Accueil </a>
+			<br /> <br /> <br /> 
 		</div>
 	</ui:define>
 

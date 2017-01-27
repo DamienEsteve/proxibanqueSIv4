@@ -27,7 +27,6 @@
 		<fieldset>
 			<legend>Liste des Clients de l'Agence dont vous êtes le
 				conseiller :</legend>
-			<h:form>
 				<h:dataTable class="table" value="#{conseillerbean.ListeClients()}"
 					var="c">
 					<h:column>
@@ -135,8 +134,8 @@
 					<p:commandButton action="#{clientbean.goCreerCli}"
 						value="Creation d'un Client" process="@form" />
 				</h:form>
-			</h:form>
 		</fieldset>
+		<br/><br/>
 	</ui:define>
 </ui:composition>
 

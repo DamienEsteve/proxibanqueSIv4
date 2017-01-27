@@ -53,8 +53,12 @@ footer {
 }
 
 #content {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: 350px;
+	padding-right: 350px;
+}
+.nav-pills{
+	padding-left: 350px;
+	padding-right: 350px;
 }
 
 menu {
@@ -103,18 +107,15 @@ img {
 
 fieldset {
 	width: 100%;
-	min-height: 350px;
+	min-height: 150px;
 	padding-bottom: 10px;
+	padding-left:100px;
+	padding-right:100px;
 	margin-bottom: 10px;
 	background-color: #7FA6A1;
 }
-
-fieldset {
-	width: 100%;
-	min-height: 350px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	background-color: #7FA6A1;
+.combutton{
+	height: 30px;
 }
 
 legend {
