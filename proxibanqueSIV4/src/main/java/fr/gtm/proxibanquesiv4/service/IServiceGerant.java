@@ -16,7 +16,4 @@ public interface IServiceGerant {
 	public long SelectIdByLoginGerant(String l);
 
 	public List<Compte> selectClientDecouvert();
-
-	public List<Compte> selectSoldeByClientDecouvert(long idPersonne);
-
 }

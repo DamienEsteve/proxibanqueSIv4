@@ -39,9 +39,4 @@ public class ServiceGerant implements IServiceGerant {
 	public List<Compte> selectClientDecouvert() {
 		return daog.selectClientDecouvert();
 	}
-
-	@Override
-	public List<Compte> selectSoldeByClientDecouvert(long idPersonne) {
-		return daog.selectSoldeByClientDecouvert(idPersonne);
-	}
 }

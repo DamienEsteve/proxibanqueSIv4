@@ -49,16 +49,7 @@ public class GerantDao implements IGerantDao {
 
 	@Override
 	public List<Compte> selectClientDecouvert() {
-		Query query = getSession().createQuery("Select co from Compte co where co.solde < 0");
+		Query query = getSession().createQuery("Select co from Compte co where co.solde < 0");	
 		return query.getResultList();
 	}
-
-	@Override
-	public List<Compte> selectSoldeByClientDecouvert(long idPersonne) {
-		Query query = getSession()
-				.createQuery("Select cpt from Compte cpt where cpt.client.idPersonne=:id and cpt.solde<0");
-		query.setParameter("id", idPersonne);
-		return query.getResultList();
-	}
-
 }

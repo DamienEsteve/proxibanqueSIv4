@@ -68,10 +68,4 @@ public class GerantDTO {
 	public List<Compte> ListeClientDecouvert() {
 		return listeclientdec = servicegerant.selectClientDecouvert();
 	}
-
-	public List<Compte> SoldeClientDecouvert(long idPersonne) {
-		System.out.println(">>> id personne : " + idPersonne);
-		return listecompte = servicegerant.selectSoldeByClientDecouvert(idPersonne);
-	}
-
 }

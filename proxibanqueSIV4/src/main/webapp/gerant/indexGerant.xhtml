@@ -59,6 +59,14 @@
 			<h:dataTable class="table"
 				value="#{gerantbean.ListeClientDecouvert()}" var="dec">
 				<h:column>
+					<f:facet name="header"> Numero de compte </f:facet>
+	    				#{dec.numeroCompte} 
+	    			</h:column>
+				<h:column>
+					<f:facet name="header"> Solde du compte </f:facet>
+	    				#{dec.solde}
+	    			</h:column>
+				<h:column>
 					<f:facet name="header"> Id Personne</f:facet>
 	    				#{dec.client.idPersonne}
 	    			</h:column>
@@ -74,21 +82,6 @@
 					<f:facet name="header"> Prénom </f:facet>
 	    				#{dec.client.prenom}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Compte </f:facet>
-					<h:dataTable class="table"
-						value="#{gerantbean.SoldeClientDecouvert(dec.client.idPersonne)}"
-						var="gera">
-						<h:column>
-							<f:facet name="header"> Numéro de Compte </f:facet>
-						#{gera.numeroCompte}
-						</h:column>
-						<h:column>
-							<f:facet name="header"> Solde </f:facet>
-						#{gera.solde}
-						</h:column>
-					</h:dataTable>
-				</h:column>
 			</h:dataTable>
 		</h:form>
 		<br />
