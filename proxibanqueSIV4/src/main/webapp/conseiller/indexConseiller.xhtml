@@ -7,80 +7,131 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
-<ui:define name="content">
-	<h3>Accueil Conseiller</h3>
-	<h4>Liste des Clients de l'Agence dont vous êtes le conseiller :</h4>
-	<h:form>
-		<h:dataTable class="table"
-			value="#{conseillerbean.ListeClients()}" var="c">
-			<h:column>
-				<f:facet name="header"> Id Client </f:facet>
+
+	<ui:define name="header">
+		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
+
+		<div>
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="indexConseiller.xhtml">
+						Accueil </a></li>
+				<li class="menu_ind "><a
+					href="../deconnexion/deconnexion.xhtml"> Deconnexion </a></li>
+				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
+			</menu>
+		</div>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3>Accueil Conseiller</h3>
+		<fieldset>
+			<legend>Liste des Clients de l'Agence dont vous êtes le
+				conseiller :</legend>
+			<h:form>
+				<h:dataTable class="table" value="#{conseillerbean.ListeClients()}"
+					var="c">
+					<h:column>
+						<f:facet name="header"> Id Client </f:facet>
 	    				#{c.idPersonne}
 	    			</h:column>
-			<h:column>
-				<f:facet name="header"> Civilité </f:facet>
+					<h:column>
+						<f:facet name="header"> Civilité </f:facet>
 	    				#{c.civilite}
 	    			</h:column>
 
-			<h:column>
-				<f:facet name="header"> Prénom </f:facet>
+					<h:column>
+						<f:facet name="header"> Prénom </f:facet>
 	    				#{c.prenom}
 	    			</h:column>
-			<h:column>
-				<f:facet name="header"> Nom </f:facet>
+					<h:column>
+						<f:facet name="header"> Nom </f:facet>
 	    				#{c.nom}
 	    			</h:column>
 
-			<h:column>
-				<f:facet name="header"> EstSociete </f:facet>
+					<h:column>
+						<f:facet name="header"> EstSociete </f:facet>
 	    				#{c.estSociete}
 	    	</h:column>
-	    	<h:column>
-					<span class="listcol"></span>
-					<f:facet id="headercol" name="header">Action</f:facet>
-					<h:form>
-					<p:commandButton action="#{clientbean.goModifCli}" value="Modifier Informations Client" process="@form">
-						<f:setPropertyActionListener value="#{c.idPersonne}" target="#{clientbean.id}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.nom}" target="#{clientbean.nom}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.prenom}" target="#{clientbean.prenom}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.email}" target="#{clientbean.email}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.adresse}" target="#{clientbean.adresse}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.ville}" target="#{clientbean.ville}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.codePostal}" target="#{clientbean.cp}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.telephone}" target="#{clientbean.telephone}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.idCoordonnees}" target="#{clientbean.idC}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.civilite}" target="#{clientbean.civilite}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.conseiller}" target="#{clientbean.conseiller}"></f:setPropertyActionListener>
-<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-					</p:commandButton>
-					</h:form>
-					<h:form>
-					<p:commandButton action="#{clientbean.goCompteCli}" value="Afficher Comptes Client" process="@form">
-						<f:setPropertyActionListener value="#{c.idPersonne}" target="#{clientbean.id}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.nom}" target="#{clientbean.nom}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.prenom}" target="#{clientbean.prenom}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.email}" target="#{clientbean.email}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.adresse}" target="#{clientbean.adresse}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.ville}" target="#{clientbean.ville}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.codePostal}" target="#{clientbean.cp}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.telephone}" target="#{clientbean.telephone}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.civilite}" target="#{clientbean.civilite}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.conseiller}" target="#{clientbean.conseiller}"></f:setPropertyActionListener>
-						<f:setPropertyActionListener value="#{c.coordonneesClient.idCoordonnees}" target="#{clientbean.idC}"></f:setPropertyActionListener>
-<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-					</p:commandButton>
-					</h:form>
-				</h:column>
-		</h:dataTable>
-		<h:form>
-			<p:commandButton action="#{clientbean.goCreerCli}" value="Creation d'un Client" process="@form"/>
-		</h:form>
-	</h:form>
-	
-	<br/><br/><br/>
-	<h:form>
-		<p:commandButton action="#{conseillerbean.deconnexion()}" value="Deconnexion" process="@form"></p:commandButton>
-	</h:form>
-</ui:define>
+					<h:column>
+						<span class="listcol"></span>
+						<f:facet id="headercol" name="header">Action</f:facet>
+						<h:form>
+							<p:commandButton action="#{clientbean.goModifCli}"
+								value="Modifier Informations Client" process="@form">
+								<f:setPropertyActionListener value="#{c.idPersonne}"
+									target="#{clientbean.id}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.nom}"
+									target="#{clientbean.nom}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.prenom}"
+									target="#{clientbean.prenom}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.email}"
+									target="#{clientbean.email}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.adresse}"
+									target="#{clientbean.adresse}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.ville}"
+									target="#{clientbean.ville}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.codePostal}"
+									target="#{clientbean.cp}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.telephone}"
+									target="#{clientbean.telephone}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.idCoordonnees}"
+									target="#{clientbean.idC}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.civilite}"
+									target="#{clientbean.civilite}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.conseiller}"
+									target="#{clientbean.conseiller}"></f:setPropertyActionListener>
+								<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
+							</p:commandButton>
+						</h:form>
+						<h:form>
+							<p:commandButton action="#{clientbean.goCompteCli}"
+								value="Afficher Comptes Client" process="@form">
+								<f:setPropertyActionListener value="#{c.idPersonne}"
+									target="#{clientbean.id}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.nom}"
+									target="#{clientbean.nom}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.prenom}"
+									target="#{clientbean.prenom}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.email}"
+									target="#{clientbean.email}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.adresse}"
+									target="#{clientbean.adresse}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.ville}"
+									target="#{clientbean.ville}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.codePostal}"
+									target="#{clientbean.cp}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.telephone}"
+									target="#{clientbean.telephone}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.civilite}"
+									target="#{clientbean.civilite}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{c.conseiller}"
+									target="#{clientbean.conseiller}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener
+									value="#{c.coordonneesClient.idCoordonnees}"
+									target="#{clientbean.idC}"></f:setPropertyActionListener>
+								<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
+							</p:commandButton>
+						</h:form>
+					</h:column>
+				</h:dataTable>
+
+				<h:form>
+					<p:commandButton action="#{clientbean.goCreerCli}"
+						value="Creation d'un Client" process="@form" />
+				</h:form>
+			</h:form>
+		</fieldset>
+	</ui:define>
 </ui:composition>
 

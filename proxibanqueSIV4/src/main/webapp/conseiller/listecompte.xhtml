@@ -7,12 +7,25 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
 
+	<ui:define name="header">
+
+		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
+
+		<div>
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="indexConseiller.xhtml">
+						Accueil </a></li>
+				<li class="menu_ind "><a
+					href="../deconnexion/deconnexion.xhtml"> Deconnexion </a></li>
+				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
+			</menu>
+		</div>
+	</ui:define>
+
 	<!-- Redefinition de la zone 'content' du layout  	-->
 	<ui:define name="content" id="content">
-		<h2>Liste des Comptes</h2>
-		<article class="row"> <section>
-
-		<div class="col-md-6">
+		<fieldset>
+			<legend>Liste des Comptes</legend>
 			<h:dataTable class="datatable" var="com"
 				value="#{clientbean.ListeComptesParClient()}" rowClasses="datarow"
 				columnClasses="datacol, datacol" headerClass="dataheader">
@@ -53,43 +66,47 @@
 				<h:column>
 					<span class="listcol"></span>
 					<f:facet id="headercol" name="header">Virer</f:facet>
-					
 				</h:column>
-
 			</h:dataTable>
-			
-			
-			<br />
-			<br />
-			<br />
+		</fieldset>
+
+		<fieldset>
+			<legend>Réaliser un virement :</legend>
 			<h:form>
-				<label>Numero compte débiteur :</label> <br /> 
-				<h:inputText id="vcc" name="vcc" label="numero compte debiteur" type="text" value="#{virementbean.numCompteDebiteur}" required="true" requiredMessage="Veuillez entrer un numero du compte debiteur">
-					<f:validateLongRange minimum="1"/>
-				</h:inputText> 
-				<h:message for="vcc" styleClass="error" style="color:red"/> <br />
-				<label>Numéro compte créditeur :</label> <br />
-				<h:inputText id="vcd" name="vcd" label="numero compte crediteur" type="text" value="#{virementbean.numCompteCrediteur}" required="true" requiredMessage="Veuillez entrer un numero du compte crediteur">
-					<f:validateLongRange minimum="1"/>
-				</h:inputText> 
-				<h:message for="vcd" styleClass="error" style="color:red"/> <br />
-				<label>Montant</label> <br /> 
-				<h:inputText  id="vmt" name="vmt" label="virememt" type="text" value="#{virementbean.montant}" required="true"  requiredMessage="Veuillez entrer un montant de virement">
-					<f:validateDoubleRange minimum="0.05"/>
-				</h:inputText> 
-				<h:message for="vmt" styleClass="error" style="color:red"/> <br />
+				<label>Numero compte débiteur :</label>
+				<h:inputText id="vcc" name="vcc" label="numero compte debiteur"
+					type="text" value="#{virementbean.numCompteDebiteur}"
+					required="true"
+					requiredMessage="Veuillez entrer un numero du compte debiteur">
+					<f:validateLongRange minimum="1" />
+				</h:inputText>
+				<h:message for="vcc" styleClass="error" style="color:red" />
 				<br />
-				<h:commandButton type="submit" action="#{virementbean.virer()}" value="Effectuer un virement"></h:commandButton><br/>
+				<label>Numéro compte créditeur :</label>
+				<h:inputText id="vcd" name="vcd" label="numero compte crediteur"
+					type="text" value="#{virementbean.numCompteCrediteur}"
+					required="true"
+					requiredMessage="Veuillez entrer un numero du compte crediteur">
+					<f:validateLongRange minimum="1" />
+				</h:inputText>
+				<h:message for="vcd" styleClass="error" style="color:red" />
+				<br />
+				<label>Montant</label>
+				<h:inputText id="vmt" name="vmt" label="virememt" type="text"
+					value="#{virementbean.montant}" required="true"
+					requiredMessage="Veuillez entrer un montant de virement">
+					<f:validateDoubleRange minimum="0.05" />
+				</h:inputText>
+				<h:message for="vmt" styleClass="error" style="color:red" />
+				<br />
+				<br />
+				<h:commandButton type="submit" action="#{virementbean.virer()}"
+					value="Effectuer un virement"></h:commandButton>
+				<br />
 			</h:form>
-			
-			<h:link value="Index" outcome="index" />
+		</fieldset>
 
-		</div>
-
-		<div class="col-md-6"></div>
-
-
-		</section> </article>
+		<a href="indexConseiller.xhtml"> Retour à l'Accueil </a>
 
 	</ui:define>
 
