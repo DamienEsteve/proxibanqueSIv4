@@ -26,6 +26,7 @@
 	<ui:define name="content" id="content">
 		<fieldset>
 			<legend>Liste des Comptes</legend>
+			<h:outputText rendered="#{virementbean.vrsEffectue}" value="Virement effectué" styleClass="error" style="color:green"/>
 			<h:dataTable class="datatable" var="com"
 				value="#{clientbean.ListeComptesParClient()}" rowClasses="datarow"
 				columnClasses="datacol, datacol" headerClass="dataheader">
@@ -102,6 +103,8 @@
 				<br />
 				<h:commandButton type="submit" action="#{virementbean.virer()}"
 					value="Effectuer un virement"></h:commandButton>
+				<h:outputText rendered="#{!virementbean.vrsOK}" value="Les paramètres du virement sont invalides" styleClass="error" style="color:red"/>
+				<h:outputText rendered="#{!virementbean.soldeOK}" value="Le solde du compte débiteur est trop bas pour effectuer ce virement" styleClass="error" style="color:red"/>
 				<br />
 			</h:form>
 		</fieldset>
