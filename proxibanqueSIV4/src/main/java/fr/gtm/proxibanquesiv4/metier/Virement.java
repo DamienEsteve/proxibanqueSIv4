@@ -22,64 +22,116 @@ import org.springframework.stereotype.Component;
 @Component
 public class Virement {
 
+	/**
+	 * L'id du virement. En base de données, correspond à la clé primaire de la table coordonées.
+	 */		
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idVirement;
 
+	/**
+	 * Le compte débiteur. 
+	 */	
 	@OneToOne
 	@JoinColumn(name = "cpt_debit")
 	private Compte compteDebiteur;
 
+	/**
+	 * Le compte créditeur. 
+	 */	
 	@OneToOne
 	@JoinColumn(name = "cpt_credit")
 	private Compte compteCrediteur;
 
+	/**
+	 * La date d'execution du virement.
+	 */	
 	@Column(nullable = false)
 	private Date dateExecution;
-
+	
+	/**
+	 * Le montant du virement.
+	 */	
 	@Column(nullable = false)
 	private double montant;
 
+	/**
+	 * Constructeur par defaut de la classe Virement
+	 */
 	public Virement() {
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return compteDebiteur
+	 */
 	public Compte getCompteDebiteur() {
 		return compteDebiteur;
 	}
-
+	
+	/**
+	 * @param compteDebiteur
+	 *            Le compteDebiteur à modifier
+	 */
 	public void setCompteDebiteur(Compte compteDebiteur) {
 		this.compteDebiteur = compteDebiteur;
 	}
 
+	/**
+	 * @return compteCrediteur
+	 */
 	public Compte getCompteCrediteur() {
 		return compteCrediteur;
 	}
 
+	/**
+	 * @param compteDebiteur
+	 *            Le compteCrediteur à modifier
+	 */
 	public void setCompteCrediteur(Compte compteCrediteur) {
 		this.compteCrediteur = compteCrediteur;
 	}
 
+	/**
+	 * @return dateExecution
+	 */
 	public Date getDateExecution() {
 		return dateExecution;
 	}
 
+	/**
+	 * @param dateExecution
+	 *            Le date d'execution du virement à modifier
+	 */
 	public void setDateExecution(Date dateExecution) {
 		this.dateExecution = dateExecution;
 	}
 
+	/**
+	 * @return montant
+	 */
 	public double getMontant() {
 		return montant;
 	}
 
+	/**
+	 * @param montant
+	 *            La valeur du montant à modifier
+	 */	
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
 
+	/**
+	 * @return idVirement
+	 */
 	public Long getIdVirement() {
 		return idVirement;
 	}
-
+	
+	/**
+	 * @param idVirement
+	 *            l'id du virement à modifier
+	 */	
 	public void setIdVirement(Long idVirement) {
 		this.idVirement = idVirement;
 	}
@@ -131,5 +183,4 @@ public class Virement {
 			return false;
 		return true;
 	}
-
 }

@@ -19,31 +19,51 @@ import org.springframework.stereotype.Component;
 @Table(indexes ={ @Index(columnList = "login", unique=true) })
 public abstract class Utilisateur extends Personne{
 
+	/**
+	 * Le login de l'utilisateur. Permet de gérer les accès en base de données.
+	 */
 	@Column(nullable=false)
 	private String login;
 	
+	/**
+	 * Le mot de passe de l'utilisateur. Permet de gérer les accès en base de données.
+	 */
 	@Column(nullable=false)
 	private String password;
 	
+	/**
+	 * Constructeur par defaut de la classe utilisateur
+	 */	
 	public Utilisateur() {
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return login
+	 */	
 	public String getLogin() {
 		return login;
 	}
 
+	/**
+	 * @param login
+	 *            le login à modifier
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * @return password
+	 */	
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/**
+	 * @param password
+	 *            le password à modifier
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

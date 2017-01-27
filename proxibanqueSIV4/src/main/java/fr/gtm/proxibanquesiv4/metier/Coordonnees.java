@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.gtm.proxibanquesiv4.metier;
 
 import java.io.Serializable;
@@ -14,9 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,16 +23,20 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 public class Coordonnees implements Serializable {
-
-	@Transient
-	private static Logger logger = Logger.getLogger(Coordonnees.class);
-
+	
+	/**
+	 * La liste des clients. Plusieurs clients peuvent avoir les mêmes coordonées (exemple : famille)
+	 */	
 	@OneToMany(mappedBy="coordonneesClient", cascade=CascadeType.ALL)
 	private List<Client> listeClient;
 	
+	/**
+	 * L'id des coordonnées. En base de données, correspond à la clé primaire de la table coordonées.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idCoordonnees;
+	
 	/**
 	 * L'adresse de la personne. Cette adresse est entree et est modifiable par
 	 * le conseiller.
@@ -46,21 +45,21 @@ public class Coordonnees implements Serializable {
 	private String adresse;
 
 	/**
-	 * Le numero de code postal de la personne. Ce code postal est entre et est
+	 * Le numero de code postal où habite la personne. Ce code postal est entre et est
 	 * modifiable par le conseiller.
 	 */
 	@Column(nullable=false)
 	private int codePostal;
 
 	/**
-	 * Le nom de la ville ou habite la personne. Le nom de la ville est entre et
+	 * Le nom de la ville où habite la personne. Le nom de la ville est entré et
 	 * est modifiable par le conseiller.
 	 */
 	@Column(nullable=false)
 	private String ville;
 
 	/**
-	 * Le numero de telephone de la personne. Ce numero est entre et est
+	 * Le numero de telephone de la personne. Ce numero est entré et est
 	 * modifiable par le conseiller.
 	 */
 	@Column(nullable=false)
@@ -74,15 +73,14 @@ public class Coordonnees implements Serializable {
 	private String email;
 
 	/**
-	 * constructeur par defaut de la classe Coordonnees
+	 * Constructeur par defaut de la classe Coordonnees
 	 */
 	public Coordonnees() {
-		logger.info("Constructeur par dï¿½faut de la classe metier.Coordonnees");
 		this.listeClient = new ArrayList<Client>();
 	}
 
 	/**
-	 * cosntructeur avec tous les arguments de la classe coordonnees
+	 * Contructeur avec tous les arguments de la classe coordonnees
 	 * 
 	 * @param adresse
 	 *            adresse de la personne
@@ -103,48 +101,83 @@ public class Coordonnees implements Serializable {
 		this.email = email;
 	}
 
+	/**
+	 * @return adresse
+	 */
 	public String getAdresse() {
 		return adresse;
 	}
 
+	/**
+	 * @param adresse
+	 *            l'adresse à modifier
+	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
+	/**
+	 * @return codePostal
+	 */
 	public int getCodePostal() {
 		return codePostal;
 	}
 
+	/**
+	 * @param codePostal
+	 *            le codePostal à modifier
+	 */
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
 	}
 
+	/**
+	 * @return ville
+	 */
 	public String getVille() {
 		return ville;
 	}
-
+	
+	/**
+	 * @param ville
+	 *            la ville à modifier
+	 */
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
 
+	/**
+	 * @return telephone
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
-
+	
+	/**
+	 * @param telephone
+	 *            le numero de telephone à modifier
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * @return email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * @param email
+	 *            l'email à modifier
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * @return the idC
+	 * @return idCoordonnees
 	 */
 	public long getIdCoordonnees() {
 		return idCoordonnees;
@@ -152,7 +185,7 @@ public class Coordonnees implements Serializable {
 
 	/**
 	 * @param idC
-	 *            the idC to set
+	 *            les idCoordonnees à modifier
 	 */
 	public void setIdCoordonnees(long idC) {
 		this.idCoordonnees = idC;
@@ -179,9 +212,4 @@ public class Coordonnees implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-
-	
-
 }
