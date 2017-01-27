@@ -12,14 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
-
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
  * 
- * Compte est la classe abstraite d'un compte. Cette classe h�rite de deux sous
+ * Compte est la classe abstraite d'un compte. Cette classe herite de deux sous
  * classes : CompteCourant et CompteEpargne.
  * 
  * 
@@ -34,27 +31,30 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class Compte implements Serializable {
 
-	@Transient
-	private static Logger logger = Logger.getLogger(Compte.class);
-
 	/**
-	 * Le numero de Compte. Chaque num�ro est unique.
+	 * Attribut prive de type long. Chaque numero est unique et de type long Cle
+	 * primaire au niveau du tableau Compte dans la base de donnees.
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long numeroCompte;
 
 	/**
-	 * Le solde du compte.
+	 * Attribut prive de type double. Dans la table Compte de la base de
+	 * donnees, l'attribut solde est par defaut initialise a false.
 	 */
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private double solde;
 
+	/**
+	 * Attribut prive de type client. Un objet de type compte est lie a un seul
+	 * obje de type client.
+	 */
 	@ManyToOne
 	private Client client;
 
 	/**
-	 * La date d'ouverture du compte.
+	 * Attribur prive de type date. La date d'ouverture du compte.
 	 */
 	private Date dateOuverture;
 
@@ -62,22 +62,21 @@ public abstract class Compte implements Serializable {
 	 * Le boolean est vrai si le compte est un compte d'entreprise, faux s'il
 	 * s'agit d'un compte particulier
 	 */
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private boolean compteEntreprise = false;
 
 	/**
-	 * Le constructeur du compte sans param�tre.
+	 * Le constructeur du compte sans parametre.
 	 */
 	public Compte() {
-		super();
-		logger.info("Constructeur par défaut de la classe modele.Compte");
+
 	}
 
 	/**
-	 * Le constructeur du Compte. 3 Param�tres sont pris en compte :
+	 * Le constructeur du Compte. 3 Parametres sont pris en compte :
 	 * 
 	 * @param numeroCompte2
-	 *            Le num�ro de compte.
+	 *            Le numero du compte.
 	 * @param solde
 	 *            Le solde du compte.
 	 * @param dateOuverture2
@@ -91,19 +90,19 @@ public abstract class Compte implements Serializable {
 	}
 
 	/**
-	 * Retourne le num�ro de compte.
+	 * Retourne le numero de compte.
 	 * 
-	 * @return Le num�ro de compte.
+	 * @return Le numero de compte.
 	 */
 	public Long getNumeroCompte() {
 		return numeroCompte;
 	}
 
 	/**
-	 * Met � jour le num�ro de compte du client.
+	 * Met a jour le numero de compte du client.
 	 * 
 	 * @param numeroCompte
-	 *            Le nouveau num�ro de compte.
+	 *            Le nouveau numero de compte.
 	 */
 	public void setNumeroCompte(Long numeroCompte) {
 		this.numeroCompte = numeroCompte;
@@ -119,7 +118,7 @@ public abstract class Compte implements Serializable {
 	}
 
 	/**
-	 * Accesseur set de l'attribut solde de la classe Compte Met � jour le solde
+	 * Accesseur set de l'attribut solde de la classe Compte met a jour le solde
 	 * du compte.
 	 * 
 	 * @param solde
@@ -139,7 +138,7 @@ public abstract class Compte implements Serializable {
 	}
 
 	/**
-	 * Accesseur get de l'attribut dateOuverture de la classe Compte Met � jour
+	 * Accesseur get de l'attribut dateOuverture de la classe Compte met a jour
 	 * la date d'ouverture du compte.
 	 * 
 	 * @param dateOuverture
@@ -150,19 +149,19 @@ public abstract class Compte implements Serializable {
 	}
 
 	/**
-	 * Retourne le type entreprise ou priv�e du compte.
+	 * Retourne le type entreprise ou privee du compte.
 	 * 
-	 * @return le type entreprise ou priv�e du compte.
+	 * @return le type entreprise ou privee du compte.
 	 */
 	public boolean getCompteEntreprise() {
 		return compteEntreprise;
 	}
 
 	/**
-	 * Met � jour le type entreprise ou priv�e du compte
+	 * Met jour le type entreprise ou privee du compte
 	 * 
 	 * @param compteEntreprise
-	 *            le type entreprise ou priv�e du compte.
+	 *            le type entreprise ou privee du compte.
 	 */
 	public boolean isCompteEntreprise() {
 		return compteEntreprise;
@@ -227,11 +226,5 @@ public abstract class Compte implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-
-
-	
-	
 
 }

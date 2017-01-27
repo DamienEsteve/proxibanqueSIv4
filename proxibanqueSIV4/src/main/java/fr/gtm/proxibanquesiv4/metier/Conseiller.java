@@ -3,7 +3,6 @@
  */
 package fr.gtm.proxibanquesiv4.metier;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,20 +26,21 @@ public class Conseiller extends Utilisateur implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
 
-	@Transient
-	private static Logger logger = Logger.getLogger(Conseiller.class);
-	
-	@OneToMany(mappedBy="conseiller")
+	/**
+	 * Collection privee de type Client contenant tous les clients dont s'occupe
+	 * le conseiller. que le client a ouvert dans la banque. Un conseiller peut
+	 * gerer les comptes bancaires de plusiers client a la fois.
+	 */
+	@OneToMany(mappedBy = "conseiller")
 	private List<Client> listeClient;
 
 	@ManyToOne
 	private Gerant gerant;
 
 	/**
-	 * Constructeur par défaut de la classe Conseiller
+	 * Constructeur par defaut de la classe Conseiller
 	 */
 	public Conseiller() {
-		logger.info("Constructeur par d�faut de la classe modele.Conseiller");
 		setListeClient(new ArrayList<Client>());
 	}
 
@@ -49,7 +48,8 @@ public class Conseiller extends Utilisateur implements Serializable {
 	 * Constructeur avec arguments de la classe client
 	 * 
 	 * @param gerant
-	 *            personne qui gère les affaires bancaires du client
+	 *            personne qui gere les affaires bancaires du client, de type
+	 *            gerant
 	 */
 	public Conseiller(Gerant gerant) {
 		this();
@@ -58,10 +58,17 @@ public class Conseiller extends Utilisateur implements Serializable {
 
 	/**
 	 * @param nom
+	 *            nom du conseiller, de type String
 	 * @param prenom
+	 *            prenom du conseiller, de type String
 	 * @param idPersonne
+	 *            identifiant unique du conseiller, de type long
 	 * @param coordonnees
+	 *            objet de type coordonnees contenant toutes les informations
+	 *            relatives a l'adresse du conseiller
 	 * @param gerant
+	 *            objet de type gerant contenant toutes les informations
+	 *            relatives au gerant attribue au conseiller
 	 */
 	public Conseiller(String nom, String prenom, int idPersonne, Coordonnees coordonnees, Gerant gerant) {
 		super();
@@ -83,11 +90,5 @@ public class Conseiller extends Utilisateur implements Serializable {
 	public void setListeClient(List<Client> listeClient) {
 		this.listeClient = listeClient;
 	}
-
-
-
-
-	
-	
 
 }

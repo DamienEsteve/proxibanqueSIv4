@@ -5,14 +5,11 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
-
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
  * 
- * ComtpeCourant est la classe repr�sentant un compte courant. Elle h�rite de la
+ * ComtpeCourant est la classe representant un compte courant. Elle herite de la
  * sur-classe Compte.
  * 
  * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
@@ -25,19 +22,15 @@ import org.springframework.stereotype.Component;
 @DiscriminatorValue("COURANT")
 public class CompteCourant extends Compte {
 
-	@Transient
-	private static Logger logger = Logger.getLogger(CompteCourant.class);
-	
 	/**
-	 * authDecouvert correspond � la valeur en euro de l'autorisation de
-	 * d�couvert du compte courant.
+	 * authDecouvert correspond a la valeur en euro de l'autorisation de
+	 * decouvert du compte courant, de type double.
 	 */
-	@Column(name="decouvert", nullable=false)
+	@Column(name = "decouvert", nullable = false)
 	private double authDecouvert = 1000;
 
 	public CompteCourant() {
 		super();
-		logger.info("Constructeur par défaut de la classe modele.CompteCourant");
 	}
 
 	/**
@@ -46,7 +39,7 @@ public class CompteCourant extends Compte {
 	 * @param numeroCompte
 	 *            numero unique d'identification du compte courant
 	 * @param solde
-	 *            montant présent du le compte courant
+	 *            montant present du le compte courant
 	 * @param dateOuverture
 	 *            date d'ouverture du compte courant dans l'agence
 	 */
@@ -54,21 +47,20 @@ public class CompteCourant extends Compte {
 		super(numeroCompte, solde, dateOuverture);
 	}
 
-	
 	/**
-	 * Retourne la valeur du d�couvert du compte courant.
+	 * Retourne la valeur du decouvert du compte courant.
 	 * 
-	 * @return La valeur du d�couvert du compte courant.
+	 * @return La valeur du decouvert du compte courant.
 	 */
 	public double getAuthDecouvert() {
 		return authDecouvert;
 	}
 
 	/**
-	 * Met � jour la valeur du d�ouvert du compte courant.
+	 * Met a jour la valeur du decouvert du compte courant.
 	 * 
 	 * @param authDecouvert
-	 *            Le nouveau d�couvert du compte courant.
+	 *            Le nouveau decouvert du compte courant.
 	 */
 	public void setAuthDecouvert(double authDecouvert) {
 		this.authDecouvert = authDecouvert;
