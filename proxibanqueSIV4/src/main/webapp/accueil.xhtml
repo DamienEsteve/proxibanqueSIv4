@@ -5,20 +5,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="./resources/theme1/template/layout.xhtml">
-<ui:define name="css">
-	<link rel="stylesheet" href="./resources/theme1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="./resources/theme1/css/styleProxi1_index.css" />
-</ui:define>
-<ui:define name="content">
+	<ui:define name="css">
+		<link rel="stylesheet" href="./resources/theme1/css/bootstrap.min.css" />
+		<link rel="stylesheet"
+			href="./resources/theme1/css/styleProxi1_index.css" />
+	</ui:define>
+	<ui:define name="content">
 
-<!-- 	<ui:composition template="/template/connexion.xhtml">
-	</ui:composition> -->
-	<br/><br/><br/>
-	Bonjour <a href="conseiller/indexConseiller.xhtml"> connectez vous mr conseiller</a>
-	<br/><br/><br/>
-	
-	<br/><br/><br/>
-	Bonjour <a href="gerant/indexGerant.xhtml"> connectez vous mr le directeur d'Agence</a>
-	<br/><br/><br/>
-</ui:define>
+		<fieldset>
+			<legend>Espace Conseiller</legend>
+			<a href="conseiller/indexConseiller.xhtml"> connectez-vous</a>
+		</fieldset>
+
+		<fieldset>
+			<legend>Espace Directeur d'Agence</legend>
+			<a href="gerant/indexGerant.xhtml"> connectez-vous</a>
+		</fieldset>
+	</ui:define>
 </ui:composition>

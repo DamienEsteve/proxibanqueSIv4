@@ -6,38 +6,41 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
+
 	<ui:define name="header">
 		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
 
 		<div>
-			<menu></menu>
-			<ul class="nav-pills nav-justified">
-				<li class="menu_ind "><a href="#"> Accueil </a></li>
-				<li class="menu_ind "><a href="deconnexion.xhtml"> Deconnexion </a></li>
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="indexGerant.xhtml"> Accueil
+				</a></li>
+				<li class="menu_ind "><a href="deconnexion.xhtml">
+						Deconnexion </a></li>
 				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
-			</ul>
-
-
-
-
+			</menu>
 		</div>
 	</ui:define>
 
 	<ui:define name="content">
-		<h:head>
+		<!-- <h:head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<title>proxibanqueSI</title>
-		</h:head>
+		</h:head> -->
 		<h:body>
-			<h3>Rappport des transactions des clients sur les trois derniers
-				mois</h3>
-			<p:chart type="pie" model="#{primeFacesPie.pieModel}"
-				style="width:400px;height:300px" />
-			<br />
-			<p:chart type="bar" model="#{primeFacesBar.barModel}"
-				style="height:300px" />
-		</h:body>
+			<h3>Rappport de transactions</h3>
+			<fieldset>
+				<legend>Transactions des clients sur les trois derniers
+					mois</legend>
+				<p:chart id="camembert" type="pie" model="#{primeFacesPie.pieModel}"
+					responsive="true" />
+			</fieldset>
+			<fieldset>
+				<legend>Transactions des clients </legend>
+				<p:chart id="histogramme" type="bar"
+					model="#{primeFacesBar.barModel}" responsive="true" />
 
+			</fieldset>
+		</h:body>
 
 		<a href="indexGerant.xhtml">Retour Accueil</a>
 	</ui:define>

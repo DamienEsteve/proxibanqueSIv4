@@ -7,6 +7,20 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="../resources/theme1/template/layout.xhtml">
 
+	<ui:define name="header">
+
+		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
+
+		<div>
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="#"> Accueil </a></li>
+				<li class="menu_ind "><a href="./connexion.xhtml">
+						Connexion </a></li>
+				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
+			</menu>
+		</div>
+	</ui:define>
+
 	<ui:define name="content">
 		<h:head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,11 +28,12 @@
 		</h:head>
 
 		<h:body>
-
-			<h2>Vous êtes déconnecté !</h2>
-			<h3>A bientôt.</h3>
-
-			<a href="connexion.xhtml"> Retour à l'Accueil </a>
+			<fieldset>
+				<h3>Vous êtes déconnecté !</h3>
+				<h4>A bientôt.</h4>
+			</fieldset>
+			
+			<a href="../accueil.xhtml"> Retour à l'Accueil </a>
 
 		</h:body>
 	</ui:define>

@@ -1,7 +1,17 @@
 @CHARSET "UTF-8";
 
-body
-{
+.camembert {
+	width: 400px;
+	height: 300px;
+	display: inline-block;
+}
+
+.histogramme {
+	height: 300px;
+	display: inline-block;
+}
+
+body {
 	font-family: 'Lucida Sans Unicode', Calibri, serif;
 	font-size: 13px;
 	padding: 0px;
@@ -9,30 +19,30 @@ body
 	background-color: #f2e5c1;
 }
 
-h1
-{
+h1 {
 	text-align: center;
 	font-size: 40px;
 	font-weight: normal;
 }
 
-h2
-{
-	text-align: left;	
+h2 {
+	text-align: left;
 	font-weight: normal;
 	font-style: oblique;
 	background-color: white;
 }
 
-header
-{
-	background-color: #B8D9B8;
-	height: 130px;
-	color: #5D7370;	
+h3,h4 {
+	text-align: center;
 }
 
-footer
-{
+header {
+	background-color: #B8D9B8;
+	height: 130px;
+	color: #5D7370;
+}
+
+footer {
 	background-color: #D6EDBD;
 	text-align: center;
 	height: 100%;
@@ -41,33 +51,30 @@ footer
 	border-top: 2px solid #b56a6a;
 }
 
-#content
-{
+#content {
 	padding-left: 30px;
 	padding-right: 30px;
 }
-nav
-{
+
+menu {
 	background-color: #FFF5BC;
-/* 	width: 100px;
- */	text-align: center;
-    
+	/* 	width: 100px;
+ */
+	text-align: center;
+	text-transform: uppercase;
 }
 
-nav li
-{
-	list-style-type: none;	
+menu li {
+	background-color: #D6EDBD;
+	list-style-type: none;
 }
 
-nav ul
-{
+/* nav ul {
 	padding: 0px;
 	margin: 0px;
-	text-align: center;	
-}
-
-nav a
-{
+	text-align: center;
+} */
+menu a {
 	display: inline-block;
 	text-decoration: none;
 	padding: 20px 15px;
@@ -75,29 +82,25 @@ nav a
 	font-size: 15px;
 	font-weight: bold;
 	text-transform: uppercase;
-	text-align: center;	
+	text-align: center;
 }
 
-p
-{
+p {
 	text-align: justify;
 	position: relative;
 }
 
-img
-{
+img {
 	width: 100px;
 	text-align: center;
 }
 
-.menu_ind:HOVER
-{
+.menu_ind:HOVER {
 	background-color: rgba(175, 255, 123, 0.20);
 	border-top: 4px solid #ffd1a4;
 }
 
-section
-{
+fieldset {
 	width: 100%;
 	min-height: 350px;
 	padding-bottom: 10px;
@@ -105,18 +108,40 @@ section
 	background-color: #7FA6A1;
 }
 
+fieldset {
+	width: 100%;
+	min-height: 350px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	background-color: #7FA6A1;
+}
 
-.rien
-{
+legend {
+	color: graytext;
+}
+
+label {
+	display: inline-block;
+	width: 150px;
+	padding: 2px 0px 5px 2px;
+	margin: 1px;
+}
+
+input {
+	width: 200px;
+	height: 20px;
+}
+
+.rien {
 	background-color: #D6EDBD;
 	border: #FFF5BC;
 	background-color: #7FA6A1;
 	background-color: #B8D9B8;
-	background-color:#5D7370;
+	background-color: #5D7370;
 	color: #AFFF7B, #5FBF2C;
 }
 
-.MessageUtil{
+.MessageUtil {
 	font-weight: bold;
 	color: #a00103;
 	font-size: 16px;
