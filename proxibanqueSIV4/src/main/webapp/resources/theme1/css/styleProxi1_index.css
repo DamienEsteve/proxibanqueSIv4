@@ -7,6 +7,7 @@
 }
 
 .histogramme {
+	width : 50%;
 	height: 300px;
 	display: inline-block;
 }
@@ -32,7 +33,7 @@ h2 {
 	background-color: white;
 }
 
-h3,h4 {
+h3, h4 {
 	text-align: center;
 }
 

@@ -9,85 +9,85 @@
 	template="../resources/theme1/template/layout.xhtml">
 
 	<ui:define name="header">
-
 		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
 
 		<div>
-			<menu></menu>
-			<ul class="nav-pills nav-justified">
-				<li class="menu_ind "><a href="#"> Accueil </a></li>
-				<li class="menu_ind "><a href="deconnexion.xhtml">
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="indexGerant.xhtml"> Accueil
+				</a></li>
+				<li class="menu_ind "><a href="../deconnexion/deconnexion.xhtml">
 						Deconnexion </a></li>
 				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
-			</ul>
+			</menu>
 		</div>
 	</ui:define>
-
 
 	<ui:define name="content">
 
 		<h3>Accueil Directeur d'Agence</h3>
-		<h4>Liste des Conseillers de l'Agence</h4>
-		<h:form>
-			<h:dataTable class="table"
-				value="#{gerantbean.ListeAllConseillers()}" var="ger">
-				<h:column>
-					<f:facet name="header"> Id Conseiller </f:facet>
+		<fieldset>
+			<legend>Liste des Conseillers de l'Agence</legend>
+
+			<h:form>
+				<h:dataTable class="table"
+					value="#{gerantbean.ListeAllConseillers()}" var="ger">
+					<h:column>
+						<f:facet name="header"> Id Conseiller </f:facet>
 	    				#{ger.idPersonne}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Civilité </f:facet>
+					<h:column>
+						<f:facet name="header"> Civilité </f:facet>
 	    				#{ger.civilite}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Nom </f:facet>
+					<h:column>
+						<f:facet name="header"> Nom </f:facet>
 	    				#{ger.nom}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Prénom </f:facet>
+					<h:column>
+						<f:facet name="header"> Prénom </f:facet>
 	    				#{ger.prenom}
 	    			</h:column>
 
-			</h:dataTable>
-		</h:form>
+				</h:dataTable>
+			</h:form>
+		</fieldset>
+		<fieldset>
+			<legend>Liste des Clients de la banque qui sont à découvert
+				:</legend>
 
-		<br />
-
-		<h:form>
-			<h4>Liste des Clients de la banque qui sont à découvert :</h4>
-
-			<h:dataTable class="table"
-				value="#{gerantbean.ListeClientDecouvert()}" var="dec">
-				<h:column>
-					<f:facet name="header"> Numero de compte </f:facet>
+			<h:form>
+				<h:dataTable class="table"
+					value="#{gerantbean.ListeClientDecouvert()}" var="dec">
+					<h:column>
+						<f:facet name="header"> Numero de compte </f:facet>
 	    				#{dec.numeroCompte} 
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Solde du compte </f:facet>
+					<h:column>
+						<f:facet name="header"> Solde du compte </f:facet>
 	    				#{dec.solde}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Id Personne</f:facet>
+					<h:column>
+						<f:facet name="header"> Id Personne</f:facet>
 	    				#{dec.client.idPersonne}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Civilité </f:facet>
+					<h:column>
+						<f:facet name="header"> Civilité </f:facet>
 	    				#{dec.client.civilite}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Nom </f:facet>
+					<h:column>
+						<f:facet name="header"> Nom </f:facet>
 	    				#{dec.client.nom}
 	    			</h:column>
-				<h:column>
-					<f:facet name="header"> Prénom </f:facet>
+					<h:column>
+						<f:facet name="header"> Prénom </f:facet>
 	    				#{dec.client.prenom}
 	    			</h:column>
-			</h:dataTable>
-		</h:form>
+				</h:dataTable>
+			</h:form>
+		</fieldset>
 		<br />
-		<br />
-	Historique des transactions des clients de la banque <a
-			href="gerant_graphiques.xhtml"> Consulter </a>
+		<br /> Historique des transactions des clients de la banque
+			<a href="gerant_graphiques.xhtml"> Consulter </a>
 		<br />
 		<br />
 		<br />
