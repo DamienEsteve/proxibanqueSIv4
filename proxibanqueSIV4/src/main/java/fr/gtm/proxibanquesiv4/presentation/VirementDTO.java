@@ -84,10 +84,10 @@ public class VirementDTO implements Serializable {
 		this.numCompteDebiteur = numCompteDebiteur;
 	}
 	public String virer() {
+		System.out.println("##############################################");
 		this.compteCrediteur = servicetransaction.selectCompteById(numCompteCrediteur);
 		this.compteDebiteur = servicetransaction.selectCompteById(numCompteDebiteur);
 		System.out.println(this.montant);
-		System.out.println("##############################################");
 		this.dateExecution = new Date();
 		Virement virement = new Virement();
 		virement.setCompteCrediteur(this.compteCrediteur);

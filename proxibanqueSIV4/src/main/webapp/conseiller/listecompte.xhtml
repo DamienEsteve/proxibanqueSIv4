@@ -64,22 +64,22 @@
 			<br />
 			<h:form>
 				<label>Numero compte débiteur :</label> <br /> 
-				<p:inputText id="vcc" name="vcc" label="vcc" type="text" value="#{virementbean.numCompteDebiteur}" required="true" requiredMessage="Veuillez entrer un numero du compte debiteur">
+				<h:inputText id="vcc" name="vcc" label="numero compte debiteur" type="text" value="#{virementbean.numCompteDebiteur}" required="true" requiredMessage="Veuillez entrer un numero du compte debiteur">
 					<f:validateLongRange minimum="1"/>
-				</p:inputText> 
+				</h:inputText> 
 				<h:message for="vcc" styleClass="error" style="color:red"/> <br />
 				<label>Numéro compte créditeur :</label> <br />
-				<p:inputText id="vcd" name="vcd" label="vcd" type="text" value="#{virementbean.numCompteCrediteur}" required="true" requiredMessage="Veuillez entrer un numero du compte crediteur">
+				<h:inputText id="vcd" name="vcd" label="numero compte crediteur" type="text" value="#{virementbean.numCompteCrediteur}" required="true" requiredMessage="Veuillez entrer un numero du compte crediteur">
 					<f:validateLongRange minimum="1"/>
-				</p:inputText> 
+				</h:inputText> 
 				<h:message for="vcd" styleClass="error" style="color:red"/> <br />
 				<label>Montant</label> <br /> 
-				<p:inputText  id="vmt" name="vmt" label="vmt" type="text" value="#{virementbean.montant}" required="true"  requiredMessage="Veuillez entrer un montant de virement">
+				<h:inputText  id="vmt" name="vmt" label="virememt" type="text" value="#{virementbean.montant}" required="true"  requiredMessage="Veuillez entrer un montant de virement">
 					<f:validateDoubleRange minimum="0.05"/>
-				</p:inputText> 
+				</h:inputText> 
 				<h:message for="vmt" styleClass="error" style="color:red"/> <br />
 				<br />
-				<p:commandButton type="submit" action="#{virementbean.virer()}" value="Effectuer un virement" process="@form"></p:commandButton><br/>
+				<h:commandButton type="submit" action="#{virementbean.virer()}" value="Effectuer un virement"></h:commandButton><br/>
 			</h:form>
 			
 			<h:link value="Index" outcome="index" />
