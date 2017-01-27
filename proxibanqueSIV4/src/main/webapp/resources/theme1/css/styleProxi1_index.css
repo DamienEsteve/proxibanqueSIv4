@@ -147,3 +147,11 @@ input {
 	color: #a00103;
 	font-size: 16px;
 }
+
+.glyphicon-list-alt {
+    font-size: 2em;
+}
+
+.glyphicon-edit {
+	font-size: 2em;
+}

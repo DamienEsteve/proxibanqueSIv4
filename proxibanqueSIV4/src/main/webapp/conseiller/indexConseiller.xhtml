@@ -54,10 +54,10 @@
 	    	</h:column>
 					<h:column>
 						<span class="listcol"></span>
-						<f:facet id="headercol" name="header">Action</f:facet>
+						<f:facet id="headercol" name="header"> Modifier un client </f:facet>
 						<h:form>
-							<p:commandButton action="#{clientbean.goModifCli}"
-								value="Modifier Informations Client" process="@form">
+							<p:commandLink action="#{clientbean.goModifCli}" process="@form">
+								<span class="glyphicon glyphicon-edit"></span>
 								<f:setPropertyActionListener value="#{c.idPersonne}"
 									target="#{clientbean.id}"></f:setPropertyActionListener>
 								<f:setPropertyActionListener value="#{c.nom}"
@@ -87,11 +87,15 @@
 								<f:setPropertyActionListener value="#{c.conseiller}"
 									target="#{clientbean.conseiller}"></f:setPropertyActionListener>
 								<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-							</p:commandButton>
+							</p:commandLink>
 						</h:form>
+					</h:column>
+					<h:column>
+					<span class="listcol"></span>
+						<f:facet id="headercol" name="header"> Liste des comptes </f:facet>
 						<h:form>
-							<p:commandButton action="#{clientbean.goCompteCli}"
-								value="Afficher Comptes Client" process="@form">
+							<p:commandLink action="#{clientbean.goCompteCli}" process="@form">
+								<span class="glyphicon glyphicon-list-alt"></span>
 								<f:setPropertyActionListener value="#{c.idPersonne}"
 									target="#{clientbean.id}"></f:setPropertyActionListener>
 								<f:setPropertyActionListener value="#{c.nom}"
@@ -121,8 +125,9 @@
 									value="#{c.coordonneesClient.idCoordonnees}"
 									target="#{clientbean.idC}"></f:setPropertyActionListener>
 								<!-- 						<f:setPropertyActionListener value="#{c.listeCompte}" target="#{clientbean.listecomptes}"></f:setPropertyActionListener> -->
-							</p:commandButton>
+							</p:commandLink>
 						</h:form>
+
 					</h:column>
 				</h:dataTable>
 
