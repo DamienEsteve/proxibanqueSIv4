@@ -98,7 +98,7 @@
 				<h:message for="vmt" styleClass="error" style="color:red" />
 				<br />
 				<br />
-				<h:commandButton type="submit" action="#{virementbean.virer()}"
+				<h:commandButton class="virbut" type="submit" action="#{virementbean.virer()}"
 					value="Effectuer un virement"></h:commandButton>
 				<h:outputText rendered="#{!virementbean.vrsOK}" value="Les paramètres du virement sont invalides" styleClass="error" style="color:red"/>
 				<h:outputText rendered="#{!virementbean.soldeOK}" value="Le solde du compte débiteur est trop bas pour effectuer ce virement" styleClass="error" style="color:red"/>

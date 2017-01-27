@@ -52,6 +52,12 @@ footer {
 	border-top: 2px solid #b56a6a;
 }
 
+.civilite tbody tr td{
+	width: 20px;
+	text-align: left;
+	
+}
+
 #content {
 	padding-left: 350px;
 	padding-right: 350px;
@@ -114,6 +120,20 @@ fieldset {
 	margin-bottom: 10px;
 	background-color: #7FA6A1;
 }
+.ui-fieldset-legend{
+	width: 600px;
+}
+
+.pfieldset{
+	width: 100%;
+	min-height: 150px;
+	padding-bottom: 10px;
+	padding-left:100px;
+	padding-right:100px;
+	margin-bottom: 10px;
+	background-color: #7FA6A1;
+}
+
 .combutton{
 	height: 30px;
 }
@@ -129,11 +149,24 @@ label {
 	margin: 1px;
 }
 
-input {
+fieldset input {
 	width: 200px;
 	height: 20px;
 }
+tr td input{
+	width : auto;
+	height: auto;
+}
 
+.logbut{
+	text-align: center;
+	margin-left: 405px;
+	height : 40px;
+}
+
+.virbut{
+	height:40px;
+}
 .rien {
 	background-color: #D6EDBD;
 	border: #FFF5BC;

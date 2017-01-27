@@ -51,9 +51,13 @@
 				</h:dataTable>
 			</h:form>
 		</fieldset>
-		<fieldset>
-			<legend>Liste des Clients de la banque qui sont à découvert
-				:</legend>
+		
+
+		<p:growl id="msgs" showDetail="true" />
+		<p:fieldset class="pfieldset" legend="Liste des Clients de la banque qui sont à découvert
+				:" toggleable="true" toggleSpeed="500">
+		<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+			
 
 			<h:form>
 				<h:dataTable class="table"
@@ -84,7 +88,7 @@
 	    			</h:column>
 				</h:dataTable>
 			</h:form>
-		</fieldset>
+		</p:fieldset>
 		<br />
 		<br /> Historique des transactions des clients de la banque
 			<a href="gerant_graphiques.xhtml"> Consulter </a>

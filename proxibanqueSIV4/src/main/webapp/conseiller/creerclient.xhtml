@@ -33,8 +33,8 @@
 				<fieldset>
 					<legend> Informations Personnelles </legend>
 					<br /> <label for="civilite">Civilité : </label>
-					<h:selectOneRadio id="civilite" value="${clientbean.civilite}"
-						required="true" requiredMessage="Veuillez entrer une civilité">
+					<h:selectOneRadio class="civilite" id="civilite" value="${clientbean.civilite}"
+						required="true" requiredMessage="Veuillez entrer une civilité" >
 						<f:selectItem itemValue="M" itemLabel="M" />
 						<f:selectItem itemValue="Mme" itemLabel="Mme" />
 					</h:selectOneRadio>
@@ -106,8 +106,7 @@
 						value="Valider la creation Client" />
 
 			</h:form>
-			<br /> <br /> <br /> <a href="indexConseiller.xhtml"> Retour à
-				l'Accueil </a>
+			<br /> <br /> <br /> 
 		</div>
 	</ui:define>
 </ui:composition>
