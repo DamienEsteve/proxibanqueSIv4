@@ -7,6 +7,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="../resources/theme1/template/layout.xhtml">
+
+	<ui:define name="header">
+
+		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
+
+		<div>
+			<menu></menu>
+			<ul class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="#"> Accueil </a></li>
+				<li class="menu_ind "><a href="deconnexion.xhtml">
+						Deconnexion </a></li>
+				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
+			</ul>
+		</div>
+	</ui:define>
+
+
 	<ui:define name="content">
 
 		<h3>Accueil Directeur d'Agence</h3>
@@ -66,7 +83,7 @@
 							<f:facet name="header"> Numéro de Compte </f:facet>
 						#{gera.numeroCompte}
 						</h:column>
- <h:column>
+						<h:column>
 							<f:facet name="header"> Solde </f:facet>
 						#{gera.solde}
 						</h:column>
