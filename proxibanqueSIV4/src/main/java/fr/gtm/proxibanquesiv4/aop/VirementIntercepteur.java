@@ -10,15 +10,28 @@ import org.aspectj.lang.annotation.Before;
 
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
+/**
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ * 
+ *          VirementIntercepteur est une classe orientée aspect appelée avant chaque virement.
+ * 
+ */
+
 @Aspect
 public class VirementIntercepteur {
 
+	/**
+	 * Avant chaque virement, la méthode logBefore écrit dans un fichier texte
+	 * les données du virement : montant, numéro du compte créditeur, numéro du
+	 * compte débiteur et date d'execution. Cette méthode permet de conserver un
+	 * historique des virements
+	 */
 	@Before("execution(* *.createVirement(..))")
 	public void logBefore(JoinPoint joinPoint) throws IOException {
 		Virement v = (Virement) joinPoint.getArgs()[0];
 		String path = System.getProperty("user.home") + "\\Documents\\Virements.txt";
-		try (
-				FileWriter fw = new FileWriter(path, true);
+		try (FileWriter fw = new FileWriter(path, true);
 				BufferedWriter bw = new BufferedWriter(fw);
 				PrintWriter out = new PrintWriter(bw)) {
 			out.println("Virement : montant :" + v.getMontant() + "€ ; date : " + v.getDateExecution()
