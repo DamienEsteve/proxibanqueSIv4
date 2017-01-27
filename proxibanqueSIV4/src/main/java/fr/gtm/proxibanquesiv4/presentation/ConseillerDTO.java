@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -20,11 +20,12 @@ import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
 @ManagedBean
 @Named("conseillerbean")
-@SessionScoped
+@ApplicationScoped
 public class ConseillerDTO implements Serializable {
 
 	private long id;
 	private List<Client> listeclients;
+	private static boolean loggedin=true;
 	
 	@Autowired
 	IServiceConseiller serviceconseiller;
@@ -44,6 +45,18 @@ public class ConseillerDTO implements Serializable {
 	}
 	public void setListeclients(List<Client> listeclients) {
 		this.listeclients = listeclients;
+	}
+	/**
+	 * @return the loggedin
+	 */
+	public static boolean isLoggedin() {
+		return loggedin;
+	}
+	/**
+	 * @param loggedin the loggedin to set
+	 */
+	public void setLoggedin(boolean loggedin) {
+		this.loggedin = loggedin;
 	}
 	public List<Client> ListeClients() {
 		/*
@@ -81,9 +94,10 @@ public class ConseillerDTO implements Serializable {
 		req.logout();
 //		HttpServletResponse resp =  (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 //		resp.sendRedirect(req.getContextPath()+"testjaas.xhtml");
-	    FacesContext.getCurrentInstance().getExternalContext().redirect("http://localhost:8085/proxibanqueSIV4" + "/testjaas.xhtml");
-	    
-		System.out.println("totoerzefrer");
+	    FacesContext.getCurrentInstance().getExternalContext().redirect("http://localhost:8085/proxibanqueSIV4" + "/accueil.xhtml");
+	    req.getSession();
+	    loggedin=false;
+		System.out.println("totoerzefrer"+req.getSession(false));
 	}
 	
 }
