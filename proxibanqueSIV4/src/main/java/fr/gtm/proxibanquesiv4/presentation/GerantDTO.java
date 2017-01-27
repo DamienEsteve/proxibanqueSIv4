@@ -7,10 +7,8 @@ import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
@@ -24,12 +22,14 @@ public class GerantDTO {
 	private long id;
 	private List<Conseiller> listeconseillers;
 	private List<Virement> listevirements;
+	@SuppressWarnings("unused")
 	private List<Compte> listeclientdec;
+	@SuppressWarnings("unused")
 	private List<Compte> listecompte;
 
-	@SuppressWarnings("unused")
-	private static Logger logger = Logger.getLogger(GerantDTO.class);
-
+	/**
+	 * Annotation permettant d'injecter la couche service
+	 */
 	@Autowired
 	public IServiceGerant servicegerant;
 

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.RequestScoped;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -31,8 +30,9 @@ public class VirementDTO implements Serializable {
 	private Date dateExecution;
 	private Boolean vrsOK, vrsEffectue, soldeOK;
 
-	private static Logger logger = Logger.getLogger(VirementDTO.class);
-
+	/**
+	 * Annotation permettant d'injecter la couche service
+	 */
 	@Autowired
 	IServiceConseiller servicetransaction;
 
@@ -121,6 +121,7 @@ public class VirementDTO implements Serializable {
 		this.soldeOK = soldeOK;
 	}
 
+	@SuppressWarnings("unused")
 	public String virer() {
 		Boolean vccOK = false;
 		Boolean vcdOK = false;
@@ -144,14 +145,14 @@ public class VirementDTO implements Serializable {
 			this.compteDebiteur = servicetransaction.selectCompteById(numCompteDebiteur);
 			if (this.compteDebiteur.getClass().equals(CompteCourant.class)) {
 				CompteCourant cc = (CompteCourant) this.compteDebiteur;
-				if (cc.getSolde()-montant < -cc.getAuthDecouvert()) {
+				if (cc.getSolde() - montant < -cc.getAuthDecouvert()) {
 					vrsEffectue = false;
 					soldeOK = false;
 					return "listecompte?faces-redirect=true";
 				}
 			} else {
 				CompteEpargne ce = (CompteEpargne) this.compteDebiteur;
-				if (ce.getSolde()-montant < 0) {
+				if (ce.getSolde() - montant < 0) {
 					vrsEffectue = false;
 					soldeOK = false;
 					return "listecompte?faces-redirect=true";

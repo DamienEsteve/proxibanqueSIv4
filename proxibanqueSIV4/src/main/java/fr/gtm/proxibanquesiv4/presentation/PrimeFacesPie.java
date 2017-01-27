@@ -1,7 +1,6 @@
 package fr.gtm.proxibanquesiv4.presentation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -17,22 +16,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 import fr.gtm.proxibanquesiv4.service.IServiceGerant;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @Named("primeFacesPie")
 @SessionScoped
 public class PrimeFacesPie implements Serializable {
 
 	private PieChartModel pieModel;
-	
+
 	@PostConstruct
 	public void init() {
 		createPieModels();
 	}
 
+	/**
+	 * Annotation permettant d'injecter la couche service
+	 */
 	@Autowired
 	IServiceGerant serviceGerant;
+
 	private Date date;
-	
+
 	private Date getDate() {
 		Date referenceDate = new Date();
 		Calendar c = Calendar.getInstance();
@@ -40,7 +44,7 @@ public class PrimeFacesPie implements Serializable {
 		c.add(Calendar.MONTH, 3);
 		return c.getTime();
 	}
-	
+
 	public PieChartModel getPieModel() {
 		return pieModel;
 	}
@@ -48,7 +52,7 @@ public class PrimeFacesPie implements Serializable {
 	private void createPieModels() {
 		createPieModel();
 	}
-     
+
 	private void createPieModel() {
 		date = getDate();
 		List<Virement> virements = serviceGerant.selectVirementsFromDate(date);

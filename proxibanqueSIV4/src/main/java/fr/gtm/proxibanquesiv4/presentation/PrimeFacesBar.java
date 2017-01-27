@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 import fr.gtm.proxibanquesiv4.service.IServiceGerant;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @Named("primeFacesBar")
 @SessionScoped
@@ -28,7 +29,10 @@ public class PrimeFacesBar implements Serializable {
 	public void init() {
 		createBarModel();
 	}
-	
+
+	/**
+	 * Annotation permettant d'injecter la couche service
+	 */
 	@Autowired
 	IServiceGerant serviceGerant;
 
@@ -60,7 +64,7 @@ public class PrimeFacesBar implements Serializable {
 				z += 1;
 			}
 		}
-		
+
 		BarChartModel model = new BarChartModel();
 
 		ChartSeries montants = new ChartSeries();
@@ -85,7 +89,7 @@ public class PrimeFacesBar implements Serializable {
 
 		Axis yAxis = barModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Nombre de virements");
-//		yAxis.setMin(0);
-//		yAxis.setMax(10);
+		// yAxis.setMin(0);
+		// yAxis.setMax(10);
 	}
 }
