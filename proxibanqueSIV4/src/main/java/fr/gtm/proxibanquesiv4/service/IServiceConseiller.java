@@ -7,6 +7,14 @@ import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
+/**
+ * 
+ * L'interface iServiceConseiller inclu toutes les méthodes du conseiller
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
 public interface IServiceConseiller {
 	public void createClient(Client cl);
 	public void updateClient(Client cl);

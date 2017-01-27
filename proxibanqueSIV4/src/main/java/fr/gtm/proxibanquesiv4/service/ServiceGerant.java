@@ -8,10 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.gtm.proxibanquesiv4.dao.IGerantDao;
-import fr.gtm.proxibanquesiv4.metier.Client;
 import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
+
+/**
+ * 
+ * La classe ServiceGerant inclu toutes les méthodes du gérant
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
 
 @Service
 @Transactional

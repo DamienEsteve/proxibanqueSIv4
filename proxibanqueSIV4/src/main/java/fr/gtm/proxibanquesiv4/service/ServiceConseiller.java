@@ -12,6 +12,15 @@ import fr.gtm.proxibanquesiv4.metier.Compte;
 import fr.gtm.proxibanquesiv4.metier.Conseiller;
 import fr.gtm.proxibanquesiv4.metier.Virement;
 
+/**
+ * 
+ * La classe ServiceConseiller Implémente les méthodes de l'interface IServiceConseiller.
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
+
 @Service
 @Transactional
 public class ServiceConseiller implements IServiceConseiller {

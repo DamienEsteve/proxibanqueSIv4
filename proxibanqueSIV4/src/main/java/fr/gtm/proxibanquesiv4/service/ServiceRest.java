@@ -5,6 +5,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * 
+ * La classe ServiceRest utilise la technologie WEB SERVICE rest. Les méthodes invoquées sont non fonctionnelles.
+ * 
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @version 4.0
+ *
+ */
+
 @Path("/rest")
 public class ServiceRest {
 
