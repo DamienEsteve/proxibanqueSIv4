@@ -3,6 +3,7 @@
   <display-name>proxibanqueSIV4</display-name>
   
   
+  
   <welcome-file-list>
     <welcome-file>accueil.xhtml</welcome-file>
   </welcome-file-list>
