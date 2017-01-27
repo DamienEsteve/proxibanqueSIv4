@@ -148,6 +148,17 @@ public class ClientDTO implements Serializable {
 		return setListecomptes(serviceconseiller.selectAllComptes());
 	}
 	public String goCreerCli(){
+		this.adresse=null;
+		this.civilite=null;
+		this.conseiller=null;
+		this.email=null;
+		this.cp=0;
+		this.idC=0;
+		this.listecomptes=null;
+		this.nom=null;
+		this.prenom=null;
+		this.telephone=null;
+		this.ville=null;
 		return "creerclient?faces-redirect=true";
 	}
 	public String goModifCli(){
