@@ -6,94 +6,111 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="../resources/theme1/template/layout.xhtml">
 
+	<ui:define name="header">
+
+		<h1>ProxiBanque : une banque proche de ses clients ...</h1>
+
+		<div>
+			<menu class="nav-pills nav-justified">
+				<li class="menu_ind "><a href="indexConseiller.xhtml">
+						Accueil </a></li>
+				<li class="menu_ind "><a
+					href="../deconnexion/deconnexion.xhtml"> Deconnexion </a></li>
+				<li class="menu_ind "><a href="contact.xhtml"> Contact </a></li>
+			</menu>
+		</div>
+	</ui:define>
+
 	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
 
-		<!-- Redefinition de la zone 'content' du layout  	-->
-		<ui:define name="content" id="content">
-			<h2 class="col-md-12">Modification des coordonnées d'un Client</h2>
+	<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="content" id="content">
+		<h2>Modification des coordonnées d'un Client</h2>
 
-			<article class="row"> 
-			<section class="sec">
-			<div>
+		<div>
 
-				<h:form>
-					<fieldset id="identite0">
-						<legend> Informations Personnelles </legend>
-						ID Actuel : ${clientbean.id} <br/>
-						Civilité actuelle : ${clientbean.civilite} <br />
-						Nom actuel : ${clientbean.nom} <br/> 
-						<label for="nom">Nom de famille : </label> 
-						<h:inputText value="${clientbean.nom}" id="nom" label="nom" required="true" requiredMessage="Veuillez entrer un nom">
-						<f:validateLength minimum="2" maximum="30"/>
-						</h:inputText>
-						<h:message for="nom" styleClass="error" style="color:red"/><br />
-															
-						Prénom actuel : ${clientbean.prenom}
-						<br /> <label for="prenom">Prénom : </label> 
-						<h:inputText value="${clientbean.prenom}" id="prenom" label="prenom" required="true" requiredMessage="Veuillez entrer un prénom">
-						<f:validateLength minimum="2" maximum="30"/>
-						</h:inputText>
-						<h:message for="prenom" styleClass="error" style="color:red"/><br />
-					</fieldset>
+			<h:form>
+				<fieldset>
+					<legend> Informations Personnelles </legend>
+					ID Actuel : ${clientbean.id} <br /> Civilité actuelle :
+					${clientbean.civilite} <br /> Nom actuel : ${clientbean.nom} <br />
+					<label for="nom">Nom de famille : </label>
+					<h:inputText value="${clientbean.nom}" id="nom" label="nom"
+						required="true" requiredMessage="Veuillez entrer un nom">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText>
+					<h:message for="nom" styleClass="error" style="color:red" />
+					<br /> Prénom actuel : ${clientbean.prenom} <br /> <label
+						for="prenom">Prénom : </label>
+					<h:inputText value="${clientbean.prenom}" id="prenom"
+						label="prenom" required="true"
+						requiredMessage="Veuillez entrer un prénom">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText>
+					<h:message for="prenom" styleClass="error" style="color:red" />
+					<br />
+				</fieldset>
 
-					<fieldset id="identite1">
-						<legend> Coordonnées Postales </legend>
-						Adresse postale actuelle :
-						${clientbean.adresse}
-						${clientbean.cp}
-						${clientbean.ville}
-						<br /> 
-						
-						<label for="adresse"> Adresse Postale : </label> 
-						<h:inputText class="identite1a" type="text" label="adresse" name="adresse" id="adresse"	value="${clientbean.adresse}" required="true" requiredMessage="Veuillez entrer une adresse">
-							<f:validateLength minimum="5" maximum="50"/>
-						</h:inputText>
-						<h:message for="adresse" styleClass="error" style="color:red"/>
-						<br/> 
-						<label class="identite1b" for="cpostale">Code Postal : </label> 
-						<h:inputText class="identite1b" type="text" label="cpostale" name="cpostale" id="cpostale" value="${clientbean.cp}" required="true" requiredMessage="Veuillez entrer un code postal"> 
-							<f:validateLength minimum="5" maximum="5"/>
-							<f:validateLongRange minimum="1"/>
-						</h:inputText>
-						<h:message for="cpostale" styleClass="error" style="color:red"/>
-						<br/> 
-						<label class="identite1b" for="ville">Ville : </label> 
-					    <h:inputText class="identite1b" type="text" label="ville" name="ville" id="ville" value="${clientbean.ville}" required="true" requiredMessage="Veuillez entrer une ville">
-							<f:validateLength minimum="2" maximum="30"/>
-						</h:inputText>
-						<h:message for="ville" styleClass="error" style="color:red"/>
-						<br/> 	
-					</fieldset>
+				<fieldset>
+					<legend> Coordonnées Postales </legend>
+					Adresse postale actuelle : ${clientbean.adresse} ${clientbean.cp}
+					${clientbean.ville} <br /> <label for="adresse"> Adresse
+						Postale : </label>
+					<h:inputText class="identite1a" type="text" label="adresse"
+						name="adresse" id="adresse" value="${clientbean.adresse}"
+						required="true" requiredMessage="Veuillez entrer une adresse">
+						<f:validateLength minimum="5" maximum="50" />
+					</h:inputText>
+					<h:message for="adresse" styleClass="error" style="color:red" />
+					<br /> <label class="identite1b" for="cpostale">Code
+						Postal : </label>
+					<h:inputText class="identite1b" type="text" label="cpostale"
+						name="cpostale" id="cpostale" value="${clientbean.cp}"
+						required="true" requiredMessage="Veuillez entrer un code postal">
+						<f:validateLength minimum="5" maximum="5" />
+						<f:validateLongRange minimum="1" />
+					</h:inputText>
+					<h:message for="cpostale" styleClass="error" style="color:red" />
+					<br /> <label class="identite1b" for="ville">Ville : </label>
+					<h:inputText class="identite1b" type="text" label="ville"
+						name="ville" id="ville" value="${clientbean.ville}"
+						required="true" requiredMessage="Veuillez entrer une ville">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText>
+					<h:message for="ville" styleClass="error" style="color:red" />
+					<br />
+				</fieldset>
 
-					<fieldset id="identite2">
-						<legend> Coordonnées Internet </legend>
-						Email actuel :
-						${clientbean.email}
-						<br /> <label for="Mail">Adresse email :</label> 
-						<h:inputText id="email" class="identite1c" value="${clientbean.email}" label="email" required="true" requiredMessage="Veuillez entrer un email">
-							<f:validateLength minimum="5" maximum="40"/>
-						</h:inputText>
-						<h:message for="email" styleClass="error" style="color:red"/>
-						<br /> 
-						Téléphone actuel : ${clientbean.telephone}
-						<br /> 
-						<label for="Telephone">Téléphone :</label> 
-						<h:inputText class="identite1c" value="${clientbean.telephone}" label="telephone" id="telephone" required="true" requiredMessage="Veuillez entrer un numéro de téléphone compris entre 10 et 12 caractères">
-							<f:validateLength minimum="10" maximum="12"/>
-						</h:inputText>
-						<h:message for="telephone" styleClass="error" style="color:red"/>
-						<br/>
-					</fieldset>
+				<fieldset>
+					<legend> Coordonnées Internet </legend>
+					Email actuel : ${clientbean.email} <br /> <label for="Mail">Adresse
+						email :</label>
+					<h:inputText id="email" class="identite1c"
+						value="${clientbean.email}" label="email" required="true"
+						requiredMessage="Veuillez entrer un email">
+						<f:validateLength minimum="5" maximum="40" />
+					</h:inputText>
+					<h:message for="email" styleClass="error" style="color:red" />
+					<br /> Téléphone actuel : ${clientbean.telephone} <br /> <label
+						for="Telephone">Téléphone :</label>
+					<h:inputText class="identite1c" value="${clientbean.telephone}"
+						label="telephone" id="telephone" required="true"
+						requiredMessage="Veuillez entrer un numéro de téléphone compris entre 10 et 12 caractères">
+						<f:validateLength minimum="10" maximum="12" />
+					</h:inputText>
+					<h:message for="telephone" styleClass="error" style="color:red" />
+					<br />
+				</fieldset>
 
-					<p id="Bouton">
-						<h:commandButton action="#{clientbean.modifClient()}" value="Valider Modifications Client"/>
-					</p>
+				<p id="Bouton">
+					<h:commandButton action="#{clientbean.modifClient()}"
+						value="Valider Modifications Client" />
+				</p>
 
-				</h:form>
-							<br /><br /><br />
-			<h:link value="Index" outcome="index" />
-			</div>
-			</section> </article>
-		</ui:define>
+			</h:form>
+			<br /> <br /> <br /> <a href="indexConseiller.xhtml"> Retour à
+				l'Accueil </a>
+		</div>
+	</ui:define>
 
-	</ui:composition>
+</ui:composition>

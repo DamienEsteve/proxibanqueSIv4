@@ -6,22 +6,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="./resources/theme1/template/layout.xhtml">
-<!-- Redefinition de la zone 'content' du layout  	-->
+
+	<!-- Redefinition de la zone 'content' du layout  	-->
+
 	<ui:define name="content" id="content">
-	<h3>Bienvenue sur le site de Proxibanque, une banque proche de ses clients.</h3>
-	<h4>Entrez vos codes de connexion :</h4>
+		<h3>Bienvenue sur le site de Proxibanque, une banque proche de
+			ses clients.</h3>
+		<fieldset>
+			<legend>Entrez vos codes de connexion : </legend>
 
-	<form method="post" action="j_security_check">
-        <h:panelGrid columns="2">
-            <h:outputLabel for="j_username" value="Username" />
-            <input type="text" id="j_username" name="j_username" />
-            <h:outputLabel for="j_password" value="Password" />
-            <input type="password" id="j_password" name="j_password" />
-            <input type="submit" name="submit" value="Login" />
-        </h:panelGrid>
-        <br />
-    </form>
-
+			<form method="post" action="j_security_check">
+				<h:panelGrid columns="2">
+					<h:outputLabel for="j_username" value="Username" />
+					<input type="text" id="j_username" name="j_username" />
+					<h:outputLabel for="j_password" value="Password" />
+					<input type="password" id="j_password" name="j_password" />
+					<input type="submit" name="submit" value="Login" />
+				</h:panelGrid>
+				<br />
+			</form>
+		</fieldset>
 	</ui:define>
 
 </ui:composition>
