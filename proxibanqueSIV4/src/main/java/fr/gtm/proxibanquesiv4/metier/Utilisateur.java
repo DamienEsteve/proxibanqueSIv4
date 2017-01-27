@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT
+ * @author Guillaume Jamin, Severine Romano, Damien Esteve, Kevin BUEWAERT 
  * @version 4.0
  *
  */
