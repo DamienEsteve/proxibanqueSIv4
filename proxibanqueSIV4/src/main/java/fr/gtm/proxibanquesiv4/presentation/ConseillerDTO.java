@@ -20,12 +20,11 @@ import fr.gtm.proxibanquesiv4.service.IServiceConseiller;
 
 @ManagedBean
 @Named("conseillerbean")
-@ApplicationScoped
+@SessionScoped
 public class ConseillerDTO implements Serializable {
 
 	private long id;
 	private List<Client> listeclients;
-	private static boolean loggedin=true;
 	
 	@Autowired
 	IServiceConseiller serviceconseiller;
@@ -46,25 +45,10 @@ public class ConseillerDTO implements Serializable {
 	public void setListeclients(List<Client> listeclients) {
 		this.listeclients = listeclients;
 	}
-	/**
-	 * @return the loggedin
-	 */
-	public static boolean isLoggedin() {
-		return loggedin;
-	}
-	/**
-	 * @param loggedin the loggedin to set
-	 */
-	public void setLoggedin(boolean loggedin) {
-		this.loggedin = loggedin;
-	}
+
 	public List<Client> ListeClients() {
-		/*
-		 * id= serviceconseiller.getIdFromLogin(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
-		 * 
-		 */
+
 		String login=FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-		System.out.println(login);
 		this.id=serviceconseiller.SelectIdByLoginConseiller(login);
 		return listeclients = serviceconseiller.selectClientsByConsId(id);
 	}
@@ -77,27 +61,8 @@ public class ConseillerDTO implements Serializable {
 		return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
 	}
 	public void deconnexion() throws IOException, ServletException{
-		
-		FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession httpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
-		httpSession.invalidate();
-		
-		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getAuthType());
-		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getContext());
-		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getContextName());
-		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		
-		System.out.println(req.isUserInRole("conseiller"));
-		System.out.println(req.isUserInRole("conseilleelkthuseor"));
-		req.getSession().invalidate();
-		req.logout();
-//		HttpServletResponse resp =  (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-//		resp.sendRedirect(req.getContextPath()+"testjaas.xhtml");
-	    FacesContext.getCurrentInstance().getExternalContext().redirect("http://localhost:8085/proxibanqueSIV4" + "/accueil.xhtml");
-	    req.getSession();
-	    loggedin=false;
-		System.out.println("totoerzefrer"+req.getSession(false));
+		String path=FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+	    FacesContext.getCurrentInstance().getExternalContext().redirect(path + "/deconnexion/deconnexion.xhtml");
 	}
 	
 }

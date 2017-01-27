@@ -14,14 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/conseiller/*")
+@WebFilter("/deconnexion/*")
 public class FilterNav implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        System.out.println("<<<<<<<<<<<<<FILTERNAV>>>>>>>>>>>>>>"+request.getContextPath());
 
         if (!request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)) { // Skip JSF resources (CSS/JS/Images/etc)
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -30,14 +29,12 @@ public class FilterNav implements Filter {
         }
 
         HttpSession session = request.getSession(false);
-        System.out.println("######"+session+"#######");
+        
+        request.getSession().invalidate();
+        request.logout();
 
-//        if (!ConseillerDTO.isLoggedin()) {
-//            response.sendRedirect(request.getContextPath() + "/accueil.xhtml"); // No logged-in user found, so redirect to login page.
-//        } else {
-//            chain.doFilter(req, res); // Logged-in user found, so just continue request.
-//        }
-        chain.doFilter(req, res);
+
+        chain.doFilter(req, res); // Logged-in user found, so just continue request.
     }
 
 	@Override

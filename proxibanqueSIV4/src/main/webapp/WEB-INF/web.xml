@@ -86,11 +86,11 @@
   </security-constraint>
   
   <login-config>
-    <auth-method>BASIC</auth-method>
-    <realm-name>espace admin</realm-name>
+    <auth-method>FORM</auth-method>
+    <realm-name>espace conseiller</realm-name>
     <form-login-config>
-      <form-login-page>/login.jsp</form-login-page>
-      <form-error-page>/error.jsp</form-error-page>
+      <form-login-page>/connexion.xhtml</form-login-page>
+      <form-error-page>/error.xhtml</form-error-page>
     </form-login-config>
   </login-config>
   
