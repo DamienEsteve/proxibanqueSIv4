@@ -20,32 +20,61 @@
 					<fieldset id="identite0">
 						<legend> Informations Personnelles </legend>
 						<br /> <label for="civilite">Civilité : </label>
-						<h:inputText value="${clientbean.civilite }" />
-						<br /> <label for="nom">Nom de famille : </label> 
-						<h:inputText value="${clientbean.nom }" />
-						<br /> <label for="prenom">Prénom : </label> 
-						<h:inputText value="${clientbean.prenom }" /><br />
+						<h:selectOneRadio id="civilite" value="${clientbean.civilite}" required="true" requiredMessage="Veuillez entrer une civilité">
+							<f:selectItem itemValue="M" itemLabel="M"/>
+							<f:selectItem itemValue="Mme" itemLabel="Mme"/>
+						</h:selectOneRadio>
+						<h:message for="civilite" styleClass="error" style="color:red"/>
+						<br /> <label for="nom"> Nom de famille : </label> 
+						<h:inputText id="nom" value="${clientbean.nom}" label="nom" required="true" requiredMessage="Veuillez entrer un nom">
+						<f:validateLength minimum="2" maximum="30"/>
+						</h:inputText>
+						<h:message for="nom" styleClass="error" style="color:red"/>
+						<br /> <label for="prenom">Prénom : </label>
+						<h:inputText id="prenom" value="${clientbean.prenom}" label="prenom" required="true" requiredMessage="Veuillez entrer un prénom">
+						<f:validateLength minimum="2" maximum="30"/>
+						</h:inputText>
+						<h:message for="prenom" styleClass="error" style="color:red"/>
+						<br/>
 					</fieldset>
 
 					<fieldset id="identite1">
 						<legend> Coordonnées Postales </legend>
-						<br /> <label for="adresse">Adresse Postale : </label> <h:inputText
-							class="identite1a" type="text" name="adresse" id="adresse"
-							value="${clientbean.adresse }" /><br /> <label
-							class="identite1b" for="cpostale">Code Postal : </label> <h:inputText
-							class="identite1b" type="text" name="cpostale" id="cpostale"
-							value="${clientbean.cp }" /><br /> <label
-							class="identite1b" for="ville">Ville : </label> <h:inputText
-							class="identite1b" type="text" name="ville" id="ville"
-							value="${clientbean.ville }" /><br />
+						<br /> <label for="adresse"> Adresse Postale : </label> 
+						<h:inputText class="identite1a" type="text" label="adresse" name="adresse" id="adresse"	value="${clientbean.adresse}" required="true" requiredMessage="Veuillez entrer une adresse">
+						<f:validateLength minimum="5" maximum="50"/>
+						</h:inputText>
+						<h:message for="adresse" styleClass="error" style="color:red"/>
+						<br/> 
+						<label class="identite1b" for="cpostale">Code Postal : </label> 
+						<h:inputText class="identite1b" type="text" label="cpostale" name="cpostale" id="cpostale" value="${clientbean.cp}" required="true" requiredMessage="Veuillez entrer un code postal"> 
+						<f:validateLength minimum="5" maximum="5"/>
+						<f:validateLongRange minimum="1"/>
+						</h:inputText>
+						<h:message for="cpostale" styleClass="error" style="color:red"/>
+						<br/> 								
+						<label class="identite1b" for="ville">Ville : </label>
+						 <h:inputText class="identite1b" type="text" label="ville" name="ville" id="ville" value="${clientbean.ville}" required="true" requiredMessage="Veuillez entrer une ville">
+						<f:validateLength minimum="2" maximum="30"/>
+						</h:inputText>
+						<h:message for="ville" styleClass="error" style="color:red"/>
+						<br/> 						 
 					</fieldset>
 
 					<fieldset id="identite2">
 						<legend> Coordonnées Internet </legend>
-						<br /> <label for="Mail">Adresse email :</label> <h:inputText
-							class="identite1c" value="${clientbean.email }" />
-						<br /> <label for="Telephone">Téléphone :</label> <h:inputText
-							class="identite1c" value="${clientbean.telephone }" /><br />
+						<br /> <label for="Mail"> Adresse email :</label> 
+						<h:inputText id="email" class="identite1c" value="${clientbean.email}" label="email" required="true" requiredMessage="Veuillez entrer un email">
+						<f:validateLength minimum="5" maximum="40"/>
+						</h:inputText>
+						<h:message for="email" styleClass="error" style="color:red"/>
+						<br /> 
+						<label for="Telephone"> Téléphone :</label> 
+						<h:inputText class="identite1c" value="${clientbean.telephone}" label="telephone" id="telephone" required="true" requiredMessage="Veuillez entrer un numéro de téléphone compris entre 10 et 12 caractères">
+						<f:validateLength minimum="10" maximum="12"/>
+						</h:inputText>
+						<h:message for="telephone" styleClass="error" style="color:red"/>
+						<br/>
 					</fieldset>
 
 					<p id="Bouton">
@@ -58,7 +87,4 @@
 			</div>
 			</section> </article>
 		</ui:define>
-
 	</ui:composition>
-
-
